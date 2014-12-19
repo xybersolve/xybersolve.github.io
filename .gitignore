@@ -1,0 +1,8 @@
+node_modules
+Gruntfile.js
+vendor
+app/navbar
+app/pages/home.html
+app/pages/coding.html
+app/pages/photography.html
+test
