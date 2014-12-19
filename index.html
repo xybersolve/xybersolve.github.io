@@ -4,41 +4,27 @@
     <meta charset="UTF-8">
     <title>Greg Milligan</title>
     <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css"/>
-    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/styles.css"/>
 
+    <script src="vendor/jquery/dist/jquery.js"></script>
     <script src="vendor/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="vendor/angular/angular.js"></script>
+    <script src="vendor/angular-route/angular-route.js"></script>
+    <script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="vendor/angular-ui/build/angular-ui.js"></script>
+
+    <script src="app/app.js"></script>
+    <script src="app/app-routes.js"></script>
+    <script src="app/navbar/navbar-directive.js"></script>
+
 
 </head>
-<body >
+<body ng-app="app">
+
+<div gm-navbar></div>
+
 <div class="container">
-    <div class="row">
-        <div class="col-xs-offset-3 col-xs-6">
-            <h2>
-                Greg Milligan - Software Developer &amp; Photographer
-            </h2>
-
-            <ul class="nav nav-tabs">
-                <li role="presentation" class="active"><a href="#">Home</a></li>
-                <li role="presentation"><a href="#">Programming</a></li>
-                <li role="presentation"><a href="#">Photography</a></li>
-            </ul>
-
-            <h2>
-                Github Projects
-            </h2>
-            <ul>
-                <li>
-                    Print Assistant
-                </li>
-                <li>
-                    XS Angular Cache Service
-                </li>
-            </ul>
-
-        </div>
-
-    </div>
-
+    <div ui-view style="min-height:400px;"></div>
 </div>
 
 </body>
