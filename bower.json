@@ -1,0 +1,29 @@
+{
+  "name": "gmilligan.github.io",
+  "version": "0.0.5",
+  "homepage": "https://github.com/gmilligan/gmilligan.github.io",
+  "authors": [
+    "Greg Milligan <xybersolve@gmail.com>"
+  ],
+  "description": "Greg Milligan Github Home Page",
+  "main": "index.html",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "Greg",
+    "Milligan",
+    "Software",
+    "Photography"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor",
+    "test",
+    "tests"
+  ]
+}
