@@ -1,9 +1,50 @@
-@toolbar-margin: 70px;
+@margin-bottom-base: 1px;
+@margin-top-base: 4px;
+
+@margin-fix-toolbar: 70px;
+
+@header-font-family: 'Lobster', Georgia, Times, serif;
+@header-font-size-base: 13px;
+@body-font-family-base: 'Cabin', Helvetica, Arial, sans-serif;
+@body-font-size-base: 15px;
+
+@header-font-family: 'Allan', Helvetica, Arial, sans-serif;
+@header-font-size-base: 13px;
+@body-font-family-base:  'Cardo', Georgia, Times, serif;
+@body-font-size-base: 18px;
+
+@header-font-family: 'Molengo', Georgia, Times, serif;
+@header-font-size-base: 14px;
+@header-font-weight: bold;
+@body-font-family-base: 'Lekton', Helvetica, Arial, sans-serif;
+@body-font-size-base: 13px;
+
+@header-font-family: 'Droid Serif', Georgia, Times, serif;
+@header-font-size-base: 14px;
+@header-font-weight: bold;
+@body-font-family-base: 'Droid Sans', Helvetica, Arial, sans-serif;
+@body-font-size-base: 14px;
+
+@header-font-family: 'Corben', Georgia, Times, serif;
+@header-font-size-base: 11px;
+@header-font-weight: normal;
+@body-font-family-base: 'Nobile', Helvetica, Arial, sans-serif;
+@body-font-size-base: 13px;
+
+@header-font-family: 'Cardo', Georgia, Times, serif;
+@header-font-size-base: 14px;
+@header-font-weight: bold;
+@header-color: #808080;
+
+@body-font-family-base: "Lato", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+@body-font-size-base: 15px;
+@body-font-color: #222222;
+
+@line-height-base: 1.4;
 
 /*----------------------------------------------------------------------------
   Reset
 ----------------------------------------------------------------------------*/
-
 * {
   padding:0;
   margin:0;
@@ -35,6 +76,178 @@ a img{ border:none; }
 
 body {
   min-height: 600px;
-  padding-top: @toolbar-margin; /* toolbar tweak */
+  padding-top: @margin-fix-toolbar; /* toolbar tweak */
+
+  font-family: @body-font-family-base;
+  font-size: @body-font-size-base;
+  line-height: @line-height-base;
+  color: @body-font-color;
 }
 
+h1,h2,h3,h4,h5 {
+  font-family: @header-font-family;
+  font-weight: @header-font-weight;
+  color: @header-color;
+  padding:0;
+  line-height: 1;
+}
+h1 {
+  font-size: @header-font-size-base + 8 ;
+  margin: @margin-top-base + 16 0 @margin-bottom-base + 6 0;
+}
+h2 {
+  font-size: @header-font-size-base + 10;
+  margin: @margin-top-base + 14 0 @margin-bottom-base + 6 0;
+}
+h3 {
+  font-size: @header-font-size-base + 4;
+  margin: @margin-top-base + 14 0 @margin-bottom-base + 6 0;
+}
+h4 {
+  font-size: @header-font-size-base + 3;
+  margin: @margin-top-base + 12 0 @margin-bottom-base + 4 0;
+}
+h5 {
+  font-size: @header-font-size-base + 2;
+  margin: @margin-top-base + 10 0 @margin-bottom-base + 2 0;
+}
+h6 {
+  font-size: @header-font-size-base + 1;
+  margin: @margin-top-base + 8 0 @margin-bottom-base + 2 0;
+}
+/*----------------------------------------------------------------------------
+  Global Layout
+----------------------------------------------------------------------------*/
+p {
+  font-size: @body-font-size-base;
+  line-height: @line-height-base;
+
+  margin-top:@margin-top-base + 2;
+  margin-bottom:@margin-bottom-base + 6;
+}
+address {
+  display: block;
+  font-style: italic;
+}
+
+.header-subtext {
+  font-weight: normal;
+  font-size: -4em;
+  color: #666666;
+  margin: 0 0 0 20px;
+}
+
+/*----------------------------------------------------------------------------
+  Bootstrap Overrides
+----------------------------------------------------------------------------*/
+li, dd {
+  margin-left: 2px;
+}
+
+ul.nav {
+  margin-left:25px;
+}
+
+/*----------------------------------------------------------------------------
+  Code Projects Layout
+----------------------------------------------------------------------------*/
+ul.projects {
+  margin-left: 2px;
+}
+
+.project-notes {
+  font-size: 16px;
+  font-style: normal;
+  color: #444;
+}
+
+a.project-title {
+  font-size: 16px;
+  font-weight: bold;
+
+  text-decoration: none;
+  color: darkblue;
+}
+a.project-title:hover,
+a.project-title:visited:hover {
+  text-decoration: none;
+  color: darkorange;
+}
+a.project-title:visited {
+  text-decoration: none;
+  color: cornflowerblue;
+}
+
+.project-technology {
+  position: relative;
+}
+
+.project-technology .label {
+  /* fixes bootstrap's label no dynamic wrap */
+  display: inline-block !important;
+
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  box-shadow: 0 0 4px rgba(50,50,50,.5);
+  margin: 2px 6px 4px 0;
+}
+
+/*----------------------------------------------------------------------------
+  Slideshow  & animation
+----------------------------------------------------------------------------*/
+.slider{
+  position: relative;
+  margin-top: 40px;
+}
+.slide img {
+  position:absolute;
+  top:0;
+  box-shadow: 0px 0px 20px rgba(50,50,50, .5);
+}
+
+.arrows{
+  position: absolute;
+  top: 10px;
+  left: 20px;
+}
+.arrow {
+  opacity: .75;
+  height: 26px;
+}
+
+.slide.ng-hide-add,
+.slide.ng-hide-remove {
+  -webkit-transition: all linear 0.5s;
+  -moz-transition: all linear 0.5s;
+  -o-transition: all linear 0.5s;
+  transition: all linear 0.5s;
+
+  display: block !important;
+}
+
+.slide.ng-hide-add.ng-hide-add-active,
+.slide.ng-hide-remove {
+  opacity: 0;
+}
+
+.slide.ng-hide-add,
+.slide.ng-hide-remove.ng-hide-remove-active {
+  opacity: 1;
+}
+
+
+/*----------------------------------------------------------------------------
+  Slideshow  & animation
+----------------------------------------------------------------------------*/
+
+.vcard img {
+  box-shadow: 0px 0px 10px rgba(50,50,50, .5);
+}
+.contact-map img {
+  box-shadow: 0px 0px 10px rgba(50,50,50, .5);
+}
+
+.contact-info {
+  font-style: normal;
+}

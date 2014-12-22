@@ -6,7 +6,7 @@
 
   function appRoutes($stateProvider, $urlRouterProvider){
 
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/coding');
 
     $stateProvider
       .state('home', {
@@ -15,11 +15,13 @@
       })
       .state('coding', {
         url: '/coding',
-        templateUrl: 'app/pages/coding.html'
+        templateUrl: 'app/pages/coding/coding.html',
+        controller: 'CodingCtrl as coding'
       })
       .state('photography', {
         url: '/photography',
-        templateUrl: 'app/pages/photography.html'
+        templateUrl: 'app/pages/photography/photography.html',
+        controller: 'PhotoCtrl as photo'
       })
       .state('contact', {
         url: '/contact',

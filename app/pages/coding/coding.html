@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-xs-offset-0 col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-10 col-lg-offset-1 col-lg-10" >
+
+        <h2>Github Projects</h2>
+        <p class="header-subtext">Code I share with the world</p>
+
+        <ul class="list-group projects">
+            <li class="list-group-item" ng-repeat="project in coding.projects">
+                <a href="{{project.href}}"
+                   target="_coding"
+                   class="project-title">
+
+                    {{project.title}}
+                </a>
+
+                <p>
+                    {{project.description}}
+                </p>
+
+                <div class="project-technology">
+                        <!--<gm-labels items="project.technology"></gm-labels>-->
+                    <div class="label label-primary"
+                          ng-repeat="tech in project.technology">
+                        {{tech}}
+                    </div>
+
+
+                </div>
+
+            </li>
+  </ul>
+
+
+    </div>
+
+</div>

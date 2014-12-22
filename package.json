@@ -1,7 +1,7 @@
 {
   "name": "gmilligan.github.io",
   "version": "0.0.5",
-  "description": "Greg Milligan - Github Home Page",
+  "description": "Greg Milligan - Github Page",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,14 +11,14 @@
     "url": "https://github.com/gmilligan/gmilligan.github.io.git"
   },
   "keywords": [
-    "\"Greg",
-    "Milligan\"",
-    "\"Xybersolve",
-    "Corp\"",
-    "\"developer\"",
-    "photographer\"",
-    "\"coding\"",
-    "\"code\""
+    "Greg Milligan",
+    "Xybersolve",
+    "Corp",
+    "developer",
+    "photographer",
+    "projects",
+    "coding",
+    "source code"
   ],
   "author": "Greg Milligan",
   "license": "ISC",

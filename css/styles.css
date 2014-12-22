@@ -64,9 +64,21 @@ a img {
 .clearfix {
   display: block;
 }
-/*
-   Main Global
-*/
+/*----------------------------------------------------------------------------
+  Main Layout
+----------------------------------------------------------------------------*/
 body {
-  padding-top: '52px';
+  min-height: 600px;
+  padding-top: 70px;
+  /* toolbar tweak */
 }
+address {
+  display: block;
+  font-style: italic;
+}
+.project-notes {
+  font-size: 14px;
+  font-style: italic;
+  color: #444;
+}
+

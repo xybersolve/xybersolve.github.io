@@ -1,5 +1,4 @@
-(function (window, angular) {
-  'use strict';
+(function (window, angular) {  'use strict';
 
     angular
       .module('app')
@@ -9,7 +8,6 @@
           templateUrl:'app/navbar/navbar.html',
           controller: function($scope) {
             $scope.isActive = function(locationDef) {
-              console.log( 'isActive ' + locationDef + ', '  + $location.path().indexOf(locationDef) );
               return $location.path().indexOf(locationDef) === 0;
             };
           }
