@@ -2,7 +2,7 @@
 
   angular
     .module('app')
-    .directive('gmSlideShow', function($timeout) {
+    .directive('gmSlideShow', ['$timeout', function($timeout) {
        return {
          restrict: 'AE',
          replace: true,
@@ -16,18 +16,17 @@
            scope.curIdx = 0;
            scope.nextSlide = function() {
              slideShow.reset();
-             scope.curIdx < scope.images.length - 1 ? scope.curIdx++: scope.curIdx = 0;
+             scope.curIdx = scope.curIdx < scope.images.length - 1 ? scope.curIdx + 1 : 0;
            };
            scope.prevSlide = function() {
              slideShow.reset();
-             scope.curIdx > 0 ? scope.curIdx--: scope.images.length - 1;
+             scope.curIdx = scope.curIdx > 0 ? scope.curIdx - 1 : scope.images.length - 1;
            };
            scope.$watch('curIdx', function() {
              scope.images.forEach(function(image) {
                image.visible = false;
              });
              scope.images[scope.curIdx].visible = true;
-             console.log(scope.images[scope.curIdx].title);
            });
 
            var slideShow = {
@@ -54,7 +53,7 @@
              slideShow.stop();
            });
          }
-       }
-    });
+       };
+    }]);
 
 })(window, window.angular);

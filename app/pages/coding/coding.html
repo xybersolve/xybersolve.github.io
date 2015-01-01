@@ -5,9 +5,9 @@
         <p class="header-subtext">Code I share with the world</p>
 
         <ul class="list-group projects">
-            <li class="list-group-item" ng-repeat="project in coding.projects">
+            <li class="list-group-item" ng-repeat="project in coding.projects | orderBy: 'sortOrder'">
                 <a href="{{project.href}}"
-                   target="_coding"
+                   target="_blank"
                    class="project-title">
 
                     {{project.title}}
@@ -18,9 +18,8 @@
                 </p>
 
                 <div class="project-technology">
-                        <!--<gm-labels items="project.technology"></gm-labels>-->
                     <div class="label label-primary"
-                          ng-repeat="tech in project.technology">
+                          ng-repeat="tech in project.technology track by $index">
                         {{tech}}
                     </div>
 
