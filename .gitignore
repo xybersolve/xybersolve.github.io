@@ -1,6 +1,9 @@
 node_modules
+archives
+archive
+archive.*
 Gruntfile.js
+bundle.js
 test
 slider
-archive.*
-archive
+

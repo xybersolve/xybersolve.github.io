@@ -4,7 +4,15 @@
   "description": "Greg Milligan - Github Page",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "gulp jshint",
+    "build": "gulp build:all",
+    "build:prod": "NODE_ENV=production gulp build:all",
+    "build:dev": "NODE_ENV=development gulp build:all",
+    "gulp": "gulp",
+    "archive": "gulp archive:project",
+    "prod": "export NODE_ENV=production && NODE_ENV=production",
+    "dev": "export NODE_ENV=development && NODE_ENV=development",
+    "debug": "gulp show:filePaths"
   },
   "repository": {
     "type": "git",
@@ -12,15 +20,24 @@
   },
   "keywords": [
     "Greg Milligan",
-    "Xybersolve",
-    "Corp",
+    "Xybersolve, Corp.",
     "developer",
+    "software",
+    "javascript",
+    "angular",
+    "mongo",
+    "OOP",
     "photographer",
+    "portfolio",
     "projects",
     "coding",
     "source code"
   ],
-  "author": "Greg Milligan",
+  "author": {
+    "name": "Greg Milligan",
+    "email": "xybersolve@gmail.com",
+    "url": "gmilligan.github.io"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/gmilligan/gmilligan.github.io/issues"
@@ -33,6 +50,26 @@
     "grunt-contrib-uglify": "^0.6.0",
     "grunt-contrib-concat": "^0.5.0",
     "grunt-contrib-copy": "^0.7.0",
-    "load-grunt-tasks": "^1.0.0"
+    "load-grunt-tasks": "^1.0.0",
+    "gulp": "^3.8.10",
+    "gulp-util": "^3.0.1",
+    "gulp-clean": "^0.3.1",
+    "gulp-jshint": "^1.9.0",
+    "gulp-concat": "^2.4.3",
+    "gulp-uglify": "^1.0.2",
+    "gulp-cssmin": "^0.1.6",
+    "gulp-strip-debug": "^1.0.2",
+    "gulp-html-replace": "^1.4.1",
+    "gulp-if": "^1.2.5",
+    "gulp-minify-html": "^0.1.8",
+    "jshint-stylish": "^1.0.0",
+    "gulp-less": "^2.0.1",
+    "run-sequence": "^1.0.2",
+    "gulp-rename": "^1.2.0",
+    "gulp-zip": "^2.0.2",
+    "del": "^1.1.1",
+    "gulp-install": "^0.2.0",
+    "gulp-sourcemaps": "^1.3.0",
+    "gulp-gzip": "0.0.8"
   }
 }
