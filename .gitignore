@@ -6,9 +6,5 @@ Gruntfile.js
 bundle.js
 test
 slider
-<<<<<<< HEAD
-archive.*
-archive
-=======
->>>>>>> development
+*.css
 
