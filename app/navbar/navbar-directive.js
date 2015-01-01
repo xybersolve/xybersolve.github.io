@@ -6,11 +6,11 @@
         return {
           restrict: 'EA',
           templateUrl:'app/navbar/navbar.html',
-          controller: function($scope) {
+          controller: ['$scope', function($scope) {
             $scope.isActive = function(locationDef) {
               return $location.path().indexOf(locationDef) === 0;
             };
-          }
+          }]
         };
       }]);
 

@@ -178,7 +178,10 @@ a.project-title:visited {
   box-shadow: 0 0 4px rgba(50, 50, 50, 0.5);
   margin: 2px 6px 4px 0;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> development
 /*----------------------------------------------------------------------------
   Slideshow  & animation
 ----------------------------------------------------------------------------*/
@@ -217,7 +220,11 @@ a.project-title:visited {
   opacity: 1;
 }
 /*----------------------------------------------------------------------------
+<<<<<<< HEAD
   Slideshow  & animation
+=======
+  Contact & Bio
+>>>>>>> development
 ----------------------------------------------------------------------------*/
 .vcard img {
   box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.5);
@@ -228,3 +235,13 @@ a.project-title:visited {
 .contact-info {
   font-style: normal;
 }
+<<<<<<< HEAD
+=======
+.profile-picture {
+  margin-left: 10px;
+  display: inline;
+  float: right;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+>>>>>>> development
