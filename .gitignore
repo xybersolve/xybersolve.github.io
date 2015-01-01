@@ -1,5 +1,7 @@
 node_modules
+npm-debug.log
 archives
+archives/
 archive
 archive.*
 Gruntfile.js
