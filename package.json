@@ -10,8 +10,6 @@
     "build:dev": "NODE_ENV=development gulp build:all",
     "gulp": "gulp",
     "archive": "gulp archive:project",
-    "prod": "export NODE_ENV=production && NODE_ENV=production",
-    "dev": "export NODE_ENV=development && NODE_ENV=development",
     "debug": "gulp show:filePaths"
   },
   "repository": {

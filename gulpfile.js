@@ -21,7 +21,8 @@ var gulp        = require('gulp')
   , del         = require('del')
   , zip         = require('gulp-zip');
 
-var verbose = true
+var project = 'gmilligan@github'
+  , verbose = true
   , environ = process.env.NODE_ENV || 'development'
   , useGzip  = false
   , useSourceMap = false;
@@ -31,7 +32,11 @@ var paths = {
   app: './app/',
   css: './css/',
   libs: './vendor/',
-  image: './image/'
+  image: './image/',
+  build: './build/',
+  archives: './archives/',
+  node: './node_modules/',
+  git: './.git/'
 };
 
 var filePaths = {
@@ -78,14 +83,26 @@ var filePaths = {
     paths.app + '**/*.js'
   ],
   archive: [
-    './**/*.*',
-    '!' + paths.libs,
-    '!' + paths.image
+    './**/*.*'
+  ],
+  excludes: [ // archive excludes - reusable??
+    '!.git/**/*',
+    '!node_modules/**/*',
+    '!vendor/**/*',
+    '!libs/**/*',
+    '!image/**/*',
+    '!img/**/*',
+    '!build/**/*',
+    '!archives/**/*',
+    '!temp/**/*',
+    '!tmp/**/*',
+    '!npm-debug.log',
+    '!nohup.out',
+    '!nohup.err'
   ]
 };
 
 gutil.log('Gulp running in: ' + environ);
-
 gulp
   // ------------------------------------------------
   // JS Lint Tasks
@@ -154,14 +171,11 @@ gulp
   // Archive Tasks
   //
   .task('archive:project', function() {
-    var now = new Date();
-    var today = now.getFullYear() + '' + (now.getMonth() + 1) + '' + now.getDate();
-    var filename = 'archive-' + today + '.zip';
-    gutil.log('archived project to: ./archives/', filename);
+    var filename = project + '-' + getTodayAsString() + '.zip';
     return gulp
-      .src(filePaths.archive)
+      .src(filePaths.excludes.concat(filePaths.archive))
       .pipe(zip(filename))
-      .pipe(gulp.dest('./archives'));
+      .pipe(gulp.dest(paths.archives));
   })
 
   // ------------------------------------------------
@@ -203,4 +217,12 @@ function logTask(task, inComing, outGoing ){
     gutil.log('Read: ', inComing);
     gutil.log('Write: ', outGoing);
   }
+}
+
+function getTodayAsString(){
+  var now = new Date();
+  function padWithZero(item){
+    return ('0' + item).slice(-2);
+  }
+  return now.getFullYear() + padWithZero(now.getMonth() + 1) + padWithZero(now.getDate());
 }
