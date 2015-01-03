@@ -9,9 +9,9 @@
           name:'Leads',
           title:'Angular Lead Management App',
           href: 'https://github.com/gmilligan/Leads',
-          description: 'Manage and track leads. Uses Angular 1.3 features',
+          description: 'MEAN Fullstack: Manage and track leads. Angular 1.3 features: form validation, $q, etc...',
           notes: '',
-          technology: ['angular 1.3' , 'grunt'],
+          technology: ['angular 1.3' , 'gulp', 'bootstrap 3.x', 'MEAN', 'mongodb', 'node', 'express 4.x'],
           sortOrder: 5
         }, {
           name:'xs-angular-cache-service',
@@ -27,7 +27,7 @@
           href: 'https://github.com/gmilligan/xs-angular-action-buttons-directive',
           description: 'Easy & configurable action buttons (BootStrap), include: New, Clone, Edit & Delete. Delete has automatic confirmation mechanism. Sizable, using: (xs, sm, md & lg)',
           notes: 'Demo & Protractor e2e testing.',
-          technology: ['angular 1.2' , 'bootstrap', 'protractor', 'grunt'],
+          technology: ['angular 1.2' , 'bootstrap 3.x', 'protractor', 'grunt'],
           sortOrder: 20
         }, {
           name:'jQM-MVC-Lazy-Loader',
@@ -51,7 +51,7 @@
           href: 'http://gmilligan.github.io/',
           description: 'Angular github page, with code project links and photography slideshow.',
           notes: 'Gulp automated',
-          technology: ['angular 1.3' ,'bootstrap', 'gulp'],
+          technology: ['angular 1.3' ,'bootstrap 3.x', 'gulp'],
           sortOrder: 50
         }, {
           name:'xs-angular-ui-components',
@@ -75,7 +75,7 @@
           href: 'https://github.com/gmilligan/xs-angular-wizard/tree/v1.0',
           description: 'A simple but useful Angular directive to create wizards, with automatic save button and navigable breadcrumbs buttons.',
           notes: '',
-          technology: ['angular 1.2' , 'bootstrap', 'grunt'],
+          technology: ['angular 1.2' , 'bootstrap 3.x', 'grunt'],
           sortOrder: 25
         }
 
