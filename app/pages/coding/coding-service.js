@@ -48,7 +48,7 @@
         }, {
           name:'gmilligan.github.io',
           title:'gmilligan.github.io',
-          href: 'http://gmilligan.github.io/',
+          href: 'https://github.com/gmilligan/gmilligan.github.io',
           description: 'Angular github page, with code project links and photography slideshow.',
           notes: 'Gulp automation',
           technology: ['angular 1.3' ,'bootstrap 3.x', 'gulp'],
