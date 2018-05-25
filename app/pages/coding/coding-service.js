@@ -6,6 +6,22 @@
       var model = {};
       model.projects = [
         {
+          name:'xs-zeromq-node-base',
+          title:'ZeroMQ and node docker base image builder',
+          href: 'https://github.com/xybersolve/xs-zeromq-node-base',
+          description: 'ZeroMQ node base image provides node based socket communications between microservices, for lightweight collaboration',
+          notes: 'ZeroMQ node base image, consumers: req-rel, pub-sub, broker-worker microservice projects',
+          technology: ['ZeroMQ' , 'Jenkins', 'docker', 'make', 'node', 'microservice'],
+          sortOrder: 5
+        }, {
+          name:'xs-jenkins-blue',
+          title:'Jenkins automated BlueOcean image builder',
+          href: 'https://github.com/xybersolve/xs-jenkins-blue',
+          description: 'Builds extensible workspace version of Jenkins BlueOcean, pushed to Docker Hub.',
+          notes: 'Jenkins pipeline, docker image builder...',
+          technology: ['Jenkins' , 'docker', 'make'],
+          sortOrder: 5
+        }, {
           name:'Leads',
           title:'Angular Lead Management App',
           href: 'https://github.com/gmilligan/Leads',
