@@ -9,7 +9,8 @@
     "build:prod": "NODE_ENV=production gulp build:all",
     "build:dev": "NODE_ENV=development gulp build:all",
     "gulp": "gulp",
-    "archive": "gulp archive:project",
+    "archive:project": "gulp archive:project",
+    "archive:build": "gulp archive:build",
     "debug": "gulp show:filePaths"
   },
   "repository": {
@@ -61,7 +62,7 @@
     "gulp-if": "^1.2.5",
     "gulp-minify-html": "^0.1.8",
     "jshint-stylish": "^1.0.0",
-    "gulp-less": "^2.0.1",
+    "gulp-less": "^3.0.0",
     "run-sequence": "^1.0.2",
     "gulp-rename": "^1.2.0",
     "gulp-zip": "^2.0.2",

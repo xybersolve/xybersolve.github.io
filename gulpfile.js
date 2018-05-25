@@ -82,6 +82,9 @@ var filePaths = {
     paths.app + 'app.js', // module defs are here
     paths.app + '**/*.js'
   ],
+  build: [
+    paths.build + '*'
+  ],
   archive: [
     './**/*.*'
   ],
@@ -174,6 +177,15 @@ gulp
     var filename = project + '-' + getTodayAsString() + '.zip';
     return gulp
       .src(filePaths.excludes.concat(filePaths.archive))
+      .pipe(zip(filename))
+      .pipe(gulp.dest(paths.archives));
+  })
+
+  .task('archive:build', function() {
+    var filename = 'build-' + getTodayAsString() + '.zip';
+    return gulp
+      //.src(filePaths.excludes.concat(filePaths.archive))
+      .src(filePaths.build)
       .pipe(zip(filename))
       .pipe(gulp.dest(paths.archives));
   })

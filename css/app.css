@@ -239,6 +239,11 @@ th {
   h3 {
     page-break-after: avoid;
   }
+
+  p {
+    line-height: 1.5em;
+  }
+
   select {
     background: #fff !important;
   }

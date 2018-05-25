@@ -120,6 +120,9 @@ p {
   margin-top: 6px;
   margin-bottom: 7px;
 }
+b {
+  color: #666 !important;
+}
 address {
   display: block;
   font-style: italic;
