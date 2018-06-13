@@ -206,10 +206,9 @@ gulp
   // Watch Tasks
   //
   .task('watch', function() {
-    gulp.watch(filePaths.less, ['less']);
-    gulp.watch(filePaths.app, ['js']);
+    gulp.watch(filePaths.less, ['css']);
+    gulp.watch(filePaths.app, ['build:js']);
   })
-
   // ------------------------------------------------
   // Composite Tasks
   //

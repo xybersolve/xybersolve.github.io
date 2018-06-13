@@ -1,0 +1,18 @@
+FROM node:6.5
+
+MAINTAINER Greg Milligan <xybersolve@gmail.com>
+
+WORKDIR /usr/app
+ADD . /usr/app
+#COPY . /user/app
+
+RUN apt-get update && \
+    npm install -g bower && \
+    npm install -g grunt-cli && \
+    npm install && \
+    bower install --allow-root
+
+RUN npm run build
+
+# build
+CMD ["npm", "run", "build"]

@@ -1,0 +1,135 @@
+.PHONY: dev dev-stop become be \
+	 			build deploy down logs ssh clean open \
+				web-all web-build web-tag web-push login web-deploy web-down web-open \
+				web web-logs clean-web web-ssh
+
+PROJECT := gmilligan
+COMPOSE_FILE := docker-compose.yaml
+STACK_FILE := docker-stack.yaml
+HTML_DIR := /usr/share/nginx/html
+HOST := $(shell docker-machine active)
+IP := $(shell docker-machine ip $(HOST))
+MANAGER_IP := $$(docker-machine ip mgr1)
+NAME := xybersolve/gmilligan.web
+
+# get login params from environment
+user := ${DOCKER_USER}
+pass := ${DOCKER_PASS}
+
+include info.mk
+
+dev:
+	${INFO} "Run http-server & open app in browser..."
+	${NOTE} "Make dev-stop: to clean up background process"
+	@npm run dev-server
+	@open http://127.0.0.1:8080
+
+dev-stop:
+	${INFO} "Close http-server..."
+	$(shell . ./kill-dev-server.sh)
+
+become:
+	@eval $$(docker-machine env mgr1)
+
+build:
+	${INFO} "Build the Angular project..."
+	@docker-compose -p $(PROJECT) -f $(COMPOSE_FILE) up builder
+	${INFO} "Copy build artifacts to the local build directory..."
+	@docker cp $$(docker-compose -p $(PROJECT) -f $(STACK_FILE) ps -q builder):/usr/app/build/. build
+	${SUCCESS} "Build complete"
+
+#
+# Build and push 'web'
+#
+web-all: web-build web-tag login web-push
+
+web-build:
+	${INFO} "Build and web container..."
+	@docker build --tag $(NAME) --file Dockerfile.nginx .
+	#@docker-compose -p $(PROJECT) -f $(COMPOSE_FILE) build web --no-cache
+
+web-tag:
+		${INFO} "Tag web service..."
+		@docker tag $(NAME) $(NAME):latest
+
+login:
+		${INFO} "Logging into DockerHub..."
+		${NOTE} "from terminal or Jenkins Credentials"
+		@docker login -u $(user) -p $(pass)
+
+web-push:
+		${INFO} "Push image to DockerHub..."
+		@docker push $(NAME):latest
+#
+# Deploy 'web' to the swarm
+#
+web-deploy: become
+	${INFO} "Deploy web service..."
+	@docker stack deploy --compose-file $(STACK_FILE) web
+	${SUCCESS} "Service deployed"
+
+web-down: become
+	${INFO} "Tear web service..."
+	@docker stack rm web
+
+web-open:
+	@open http://$(MANAGER_IP):8888/
+
+be: ## make be mac=wrk4
+	echo eval $$(docker-machine env $(mac))
+
+down:
+	${INFO} "Remove web service..."
+	@docker stack rm web
+
+clean:
+	${INFO} "Tear down the Angular build..."
+	@docker-compose -p $(PROJECT) -f $(COMPOSE_FILE) down builder
+
+logs:
+	${INFO} "Review the Angular build logs..."
+	@docker-compose logs $$(docker-compose -p $(PROJECT) -f $(COMPOSE_FILE) ps -q builder)
+
+ssh: ## SSH into image
+	${INFO} "SSH into the Angular build container..."
+	@docker-compose exec -it $$(docker-compose -p $(PROJECT) -f $(COMPOSE_FILE) ps -q builder) bash
+	#docker exec -it $$(docker-compose -p $(PROJECT) -f $(COMPOSE_FILE) ps -q build) bash
+	#@docker run -it --rm $(IMAGE_BUILD) bash
+
+# web-deploy:
+# 	${INFO} "Build and deploy web container..."
+# 	@docker stack deploy --compose-file docker-stack.yaml web
+
+web:
+	${INFO} "Build and start web container..."
+	@docker-compose -p $(PROJECT) -f $(COMPOSE_FILE) up -d --build web
+
+web-stack:
+	@docker stack deploy --compose-file docker-stack.yaml gmilligan.web
+
+web-logs:
+	@docker logs $$(docker-compose -p $(PROJECT) -f $(COMPOSE_FILE) ps -q web)
+
+clean-web:
+	${INFO} "Tear down the web build..."
+	@docker-compose -p $(PROJECT) -f $(COMPOSE_FILE) down web
+
+web-ssh:
+	@docker exec -it $$(docker-compose -p $(PROJECT) -f $(COMPOSE_FILE) ps -q web) bash
+
+open:
+	@open http://$(IP):8181
+
+test:
+	@curl -u http://$(IP):8181/#/
+
+#clean-web:
+#	@docker container stop $(CONTAINER_WEB) || true
+#	@docker container rm $(CONTAINER_WEB) || true
+#	@docker image rm $(IMAGE_WEB) || true
+# docker-compose -p gmilligan -f docker-compose.yaml ps -q web
+
+# publish static build
+#docker build -t gmilligan .
+#docker run -p 80:80 gmilligan
+#docker run -p 80:80 -v ${PWD}:/usr/share/nginx/html gmilligan

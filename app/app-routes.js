@@ -6,13 +6,18 @@
 
   function appRoutes($stateProvider, $urlRouterProvider){
 
-    $urlRouterProvider.otherwise('/coding');
+    $urlRouterProvider.otherwise('/about');
 
     $stateProvider
-      .state('home', {
-        url: '/',
-        templateUrl: 'app/pages/home.html'
+      // .state('home', {
+      //   url: '/',
+      //   templateUrl: 'app/pages/home.html'
+      // })
+      .state('about', {
+        url: '/about',
+        templateUrl: 'app/pages/about.html'
       })
+
       .state('coding', {
         url: '/coding',
         templateUrl: 'app/pages/coding/coding.html',

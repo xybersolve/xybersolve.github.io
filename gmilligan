@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+declare -r PROGNAME='deploy.sh'
+declare -r MANAGER='mgr1'
+declare -r NETWORK='gmilligan-net'
+declare IP=''
+
+__get_manager_ip() {
+  IP=$(docker-machine ip ${MANAGER})
+}
+
+__become() {
+  local machine=${1:-${MANAGER}}
+  eval $(docker-machine env ${machine})
+}
+
+
+__create_network() {
+  docker network create \
+    --driver=overlay \
+    ${NETWORK} || true
+}
+
+__web_up() {
+  #docker stack deploy
+  docker service create \
+    --name "gmilligan" \
+    --replicas 2 \
+    -p "8080:80" \
+    --constraint 'node.role == worker' \
+    --network "${NETWORK}" \
+    xybersolve/gmilligan.web:latest
+}
+
+__down() {
+  docker service rm gmilligan || true
+  docker network rm ${NETWORK}
+}
+
+__up() {
+  __become
+  __web_up
+}
+
+__all() {
+  __become
+  __create_network
+  __web_up
+}
+
+__open() {
+  __get_manager_ip
+  open http://${IP}:8080/
+}
+
+declare FLAG=${1:-help}
+case ${FLAG} in
+  --up)   __up   ;;
+  --all)  __all  ;;
+  --down) __down ;;
+  --open) __open ;;
+  help)
+    echo "
+    Usage
+      ${PROGNAME} <options>
+
+      Options:
+        --up: load the web service
+        --open: open the web service in browser
+        --all: create network and load web service
+        --down: tear down the web service
+
+      Examples:
+      . ./${PROGNAME} --up
+      . ./${PROGNAME} --all
+      . ./${PROGNAME} --open
+      . ./${PROGNAME} --down
+    "
+    ;;
+esac

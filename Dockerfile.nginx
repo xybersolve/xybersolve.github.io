@@ -1,0 +1,14 @@
+FROM nginx
+
+MAINTAINER Greg Milligan <xybersolve@gmail.com>
+
+RUN rm /etc/nginx/conf.d/default.conf
+RUN rm /usr/share/nginx/html/index.html
+COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
+COPY . /usr/share/nginx/html
+
+RUN chown -R www-data:www-data /usr/share/nginx/html \
+    && chmod -R 0755 /usr/share/nginx/html
+
+#VOLUME /usr/share/nginx/html
+#VOLUME /etc/nginx

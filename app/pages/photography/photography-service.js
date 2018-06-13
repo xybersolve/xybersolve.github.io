@@ -77,12 +77,6 @@
           show: true,
           sort: 80
         }, {
-          title: 'Elvis Egret',
-          file: 'Elvis-Egret.jpg',
-          note: '',
-          show: false,
-          sort: 90
-        }, {
           title: 'Moon Gazing Surf Statue',
           file: 'Moon-Gazing-Surf-Statue.jpg',
           note: '',
@@ -131,4 +125,3 @@
     }]);
 
 })(window, window.angular);
-

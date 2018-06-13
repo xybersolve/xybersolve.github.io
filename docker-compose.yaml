@@ -1,0 +1,30 @@
+version: '2'
+
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    image: xybersolve/gmilligan.dev
+    container_name: gmilligan.dev
+    volumes:
+      - ./:/usr/share/nginx/html:ro
+    ports:
+     - "8383:80"
+
+  builder:
+    build:
+      context: .
+      dockerfile: Dockerfile.build.in-place
+    image: xybersolve/gmilligan.angular
+    container_name: gmilligan.angular
+    command: bash
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    image: xybersolve/gmilligan.web:latest
+    container_name: gmilligan
+    ports:
+      - "8181:80"

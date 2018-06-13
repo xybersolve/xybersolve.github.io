@@ -1,0 +1,29 @@
+version: '3.1'
+
+services:
+  gmilligan.web:
+    image: xybersolve/gmilligan.web:latest
+    ports:
+      - "8888:80"
+    deploy:
+      replicas: 2
+      placement:
+        constraints: [node.role == worker]
+    # healthcheck:
+    #   test: ["CMD", "curl", "-f", "http://localhost:8888/"]
+    #   interval: 15s
+    #   retries: 3
+    networks:
+      - gmilligan-net
+
+networks:
+  gmilligan-net:
+    driver: overlay
+
+# docker service create \
+#   --name "gmilligan" \
+#   --replicas 2 \
+#   -p "8080:80" \
+#   --constraint 'node.role == worker' \
+#   --network "${NETWORK}" \
+#   xybersolve/gmilligan.web:latest
