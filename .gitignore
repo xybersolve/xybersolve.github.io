@@ -10,3 +10,5 @@ test
 slider
 *.css
 
+node_modules
+vendor
