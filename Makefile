@@ -18,6 +18,11 @@ FILE_WEB := Dockerfile.nginx
 # git commit hash
 GIT_SHORT := $(shell git log -1 --pretty=%h)
 
+# assign docker login from environment, for terminal make
+# overwritten by Jenkins credentials, for jenkins make
+user := ${DOCKER_USER}
+pass := ${DOCKER_PASS}
+
 build: build-build build-web tag-web login push-web
 
 include info.mk
@@ -65,8 +70,8 @@ test-web:
 
 tag-web:
 	${INFO} "Tagging web image..."
-	@docker tag $(IMAGE) $(ORG)/$(IMAGE_WEB):$(GIT_SHORT)
-	@docker tag $(IMAGE) $(ORG)/$(IMAGE_WEB):latest
+	@docker tag $(IMAGE_WEB) $(ORG)/$(IMAGE_WEB):$(GIT_SHORT)
+	@docker tag $(IMAGE_WEB) $(ORG)/$(IMAGE_WEB):latest
 
 login:
 	${INFO} "Logging into DockerHub..."
