@@ -8,21 +8,17 @@ node {
     sh 'make build-build'
   }
 
-  stage('Test') {
-    sh 'make test-build'
-  }
-
   stage('Build Web') {
     sh 'make build-web'
   }
 
   stage('Tag Web') {
-    sh 'make tag-build'
+    sh 'make tag-web'
   }
 
   stage('Push Web') {
     sh 'make login'
-    sh 'make push-build'
+    sh 'make push-web'
   }
 
   /*

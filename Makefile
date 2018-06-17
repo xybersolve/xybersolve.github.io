@@ -44,21 +44,24 @@ test-build:
 # Web
 #
 clean-web:
+	${INFO} "Clean web container & image..."
 	@docker container stop $(CONTAINER_WEB) || true
 	@docker container rm $(CONTAINER_WEB) || true
 	@docker image rm $(IMAGE_WEB) || true
 
 build-web: clean-web
+	${INFO} "Build web image..."
 	@docker build --tag $(IMAGE_WEB) -f $(FILE_WEB) .
 
 run-web:
+	${INFO} "Run web image..."
 	@docker run --name $(CONTAINER_WEB) -p 80:80 -d $(IMAGE_WEB)
 
 test-web:
 	echo "Smoke and unit tests here "
 
 tag-web:
-	${INFO} "Tagging base image..."
+	${INFO} "Tagging web image..."
 	@docker tag $(IMAGE) $(ORG)/$(IMAGE_WEB):$(GIT_SHORT)
 	@docker tag $(IMAGE) $(ORG)/$(IMAGE_WEB):latest
 
@@ -68,7 +71,7 @@ login:
 	@docker login -u $(user) -p $(pass)
 
 push-web:
-	${INFO} "Push"
+	${INFO} "Push web image"
 	@docker push $(ORG)/$(IMAGE_WEB):$(GIT_SHORT)
 	@docker push $(ORG)/$(IMAGE_WEB):latest
 #
