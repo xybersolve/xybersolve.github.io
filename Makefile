@@ -1,6 +1,7 @@
 .PHONY: clean-build build-build test-build \
 				clean-web build-web run-web test_web tag-web login push-web \
-				logs-build ssh-build logs-web ssh-web
+				logs-build ssh-build logs-web ssh-web \
+				build
 
 ORG := xybersolve
 
@@ -16,6 +17,8 @@ FILE_WEB := Dockerfile.nginx
 
 # git commit hash
 GIT_SHORT := $(shell git log -1 --pretty=%h)
+
+build: build-build build-web tag-web login push-web
 
 include info.mk
 #
@@ -34,7 +37,7 @@ clean-build:
 build-build: clean-build
 	${INFO} "Build Angular project..."
 	@docker build -t $(IMAGE_BUILD) -f $(FILE_BUILD) .
-	@docker ru1n --name $(CONTAINER_BUILD) -d $(IMAGE_BUILD)
+	@docker run --name $(CONTAINER_BUILD) -d $(IMAGE_BUILD)
 	@docker cp $(CONTAINER_BUILD):/usr/app/build/. build
 	${SUCCESS} "Built Angular project"
 
