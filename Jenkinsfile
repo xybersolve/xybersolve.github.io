@@ -4,18 +4,30 @@ node {
     checkout scm
   }
 
-  stage('Clean') {
-    sh 'make clean'
-  }
+  # encapsulated in Makefile
+  #stage('Clean') {
+  #  sh 'make clean-build'
+  #}
 
   stage('Build') {
-    sh 'make build'
+    sh 'make build-build'
   }
 
   stage('Test') {
-    app.inside {
-      sh 'echo "Tests passed"'
-    }
+    sh 'make test-build'
+  }
+
+  stage('Build Web') {
+    sh 'make build-web'
+  }
+
+  stage('Tag Web') {
+    sh 'make tag-build'
+  }
+
+  stage('Push Web') {
+    sh 'make login'
+    sh 'make push-build'
   }
 
   /*

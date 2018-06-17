@@ -1,19 +1,14 @@
+#
+#  Build Angular source (legacy) from originally installed node_modules
+#   * avoids version discrepancies from older npm modules
+#   * copy code, vendor support modules and build
+#   * copy (cp) out build artifacts, in Makefile
+#
 FROM node:6.5
 
-#Install bower to command line
-RUN npm install -g bower gulp
+MAINTAINER Greg Milligan <xybersolve@gmail.com>
 
-# Define the host folder that will contain the code
-WORKDIR /app
+WORKDIR /usr/app
+ADD . /usr/app
 
-# Copy src to application host folder**
-ADD . /app
-
-# RUN move to /application/public/webapp where there is a bower.json file and install it**
-RUN cd /app
-RUN bower install --allow-root --config.interactive=false
-RUN npm install
-
-# ENTRYPOINT ["npm"]
-
-CMD ["npm", build-all"]
+RUN npm run build:prod

@@ -1,17 +1,21 @@
-.PHONY: clean build tag login push \
-				run archive logs ssh  \
-				build-web run-web test_web clean-web
+.PHONY: clean-build build-build test-build \
+				clean-web build-web run-web test_web tag-web login push-web \
+				logs-build ssh-build logs-web ssh-web
 
-IMAGE_BUILD := xybersolve/gmilligan.angular
-CONTAINER_BUILD := gmilligan.angular
-FILE_BUILD := Dockerfile.build.in-place
+ORG := xybersolve
 
+# Build variables
+IMAGE_BUILD := xybersolve/gmilligan.build
+CONTAINER_BUILD := gmilligan.build
+FILE_BUILD := Dockerfile.build
+
+# Web variables
 IMAGE_WEB := xybersolve/gmilligan.web
 CONTAINER_WEB := gmilligan.web
-
 FILE_WEB := Dockerfile.nginx
 
-IP =: $(shell docker-machine ip $(shell docker-machine active))
+# git commit hash
+GIT_SHORT := $(shell git log -1 --pretty=%h)
 
 include info.mk
 #
@@ -19,66 +23,78 @@ include info.mk
 # Jenkins routines start here
 #   * docker only Jenkins routines
 #
-clean:
+# Build
+#
+clean-build:
+	${INFO} "Clean Angular project..."
 	@docker container stop $(CONTAINER_BUILD) || true
 	@docker container rm $(CONTAINER_BUILD) || true
 	@docker image rm $(IMAGE_BUILD) || true
 
-build:
-	${INFO} "Build the Angular project..."
-	@npm run build
-	#@docker build --tag $(IMAGE_BUILD) -f $(FILE_BUILD) .
-	#${INFO} "Run the built Angular project..."
-	#@docker run -f $(COMPOSE_FILE) up builder
-	#${INFO} "Copy build artifacts to the local build directory..."
-	#@docker cp $$(docker-compose -p $(PROJECT) -f $(COMPOSE_FILE) ps -q builder):/usr/app/build/. build
-	#${SUCCESS} "Build complete"
+build-build: clean
+	${INFO} "Build Angular project..."
+	#@npm run build
+	@docker build -t $(IMAGE_BUILD) -f $(FILE_BUILD) .
+	@docker ru1n --name $(CONTAINER_BUILD) -d $(IMAGE_BUILD)
+	# most recently built container
+	#$$(docker ps -alq)
+	@docker cp $(CONTAINER_BUILD):/usr/app/build/. build
+	${SUCCESS} "Built Angular project"
 
-test:
+test-build:
 	echo "Unit & smoke test here..."
-
-tag: ## Tag the base image for deployment to DockerHub
-	${INFO} "Tagging base image..."
-	@docker tag $(IMAGE) $(ORG)/$(IMAGE):$(GIT_SHORT)
-	@docker tag $(IMAGE) $(ORG)/$(IMAGE):latest
-
-login: ## Login to docker hub
-	${INFO} "Logging into DockerHub..."
-	# from terminal or Jenkins Credentials
-	@docker login -u $(user) -p $(pass)
-
-push:  ## Push to DockerHub, requires prior login
-	${INFO} "Push"
-	@docker push $(ORG)/$(IMAGE):$(GIT_SHORT)
-	@docker push $(ORG)/$(IMAGE):latest
 #
-# Jenkins routines end here
-# -------------------------------------------
+# Web
 #
-run:
-	@docker run -d $(IMAGE_BUILD)
+clean-web:
+	@docker container stop $(CONTAINER_WEB) || true
+	@docker container rm $(CONTAINER_WEB) || true
+	@docker image rm $(IMAGE_WEB) || true
 
-archive: ## Build and archive the build artifacts
-	${INFO} "Copy build artifacts to the local build directory..."
-	@docker cp $(CONTAINER_BUILD):/usr/app/build/. ./build
-
-logs:
-	@docker logs -f $(CONTAINER_BUILD)
-
-ssh: ## SSH into image
-	${INFO} "SSH into the Angular build image..."
-	@docker run -it --rm $(IMAGE_BUILD) bash
-
-build-web:
+build-web: clean-web
 	@docker build --tag $(IMAGE_WEB) -f $(FILE_WEB) .
 
 run-web:
 	@docker run --name $(CONTAINER_WEB) -p 80:80 -d $(IMAGE_WEB)
 
-clean-web:
-	@docker container stop $(CONTAINER_WEB) || true
-	@docker container rm $(CONTAINER_WEB) || true
-	@docker image rm $(IMAGE_WEB) || true
+test-web:
+	echo "Smoke and unit tests here "
+
+tag-web:
+	${INFO} "Tagging base image..."
+	@docker tag $(IMAGE) $(ORG)/$(IMAGE_WEB):$(GIT_SHORT)
+	@docker tag $(IMAGE) $(ORG)/$(IMAGE_WEB):latest
+
+login:
+	${INFO} "Logging into DockerHub..."
+	# from terminal or Jenkins Credentials
+	@docker login -u $(user) -p $(pass)
+
+push-web:
+	${INFO} "Push"
+	@docker push $(ORG)/$(IMAGE_WEB):$(GIT_SHORT)
+	@docker push $(ORG)/$(IMAGE_WEB):latest
+#
+# Jenkins routines end here
+# -------------------------------------------
+#
+#
+# Support & debug paths
+#
+logs-build:
+	@docker logs -f $(CONTAINER_BUILD)
+
+ssh-build: ## SSH into image
+	${INFO} "SSH into the Angular build image..."
+	@docker run -it --rm $(IMAGE_BUILD) bash
+
+logs-web:
+	@docker logs -f $(CONTAINER_WEB)
+
+ssh-web: ## SSH into image
+	${INFO} "SSH into the Angular build image..."
+	@docker run -it --rm $(IMAGE_WEB) bash
+
 
 
 # publish static build
