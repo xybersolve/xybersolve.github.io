@@ -215,7 +215,8 @@ gulp
   .task('build:js', ['clean:js', 'js'], function() {
     gutil.log('build:js complete');
   })
-  .task('build:all', ['clean:pre', 'jshint', 'js', 'css', 'clean:post'], function(){
+  //.task('build:all', ['clean:pre', 'jshint', 'js', 'css', 'clean:post'], function(){
+  .task('build:all', ['clean:pre', 'js', 'css', 'clean:post'], function(){
     gutil.log('build:all complete');
   })
   .task('default', ['build:all', 'watch'], function() {
