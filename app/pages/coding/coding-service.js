@@ -9,23 +9,23 @@
           name:'terraform_data_source_modules',
           title:'Custom Terraform Modules to lookup AWS or extant resources.',
           href: 'https://github.com/xybersolve/terraform-data-source-modules',
-          description: 'I find these lookup modules useful, when one needs to grab existing resource ids or dynamically pull AMI Ids.',
+          description: 'These lookup data modules are useful when one needs to grab existing resources ids or pull AMI Ids.',
           notes: 'Terraform data sources for resource lookup...',
           technology: ['terraform'],
-          sortOrder: 20
+          sortOrder: 10
         }, {
           name:'tf',
-          title:'Terraform helper script. Simplifies and ensures consistency in cli commands.',
+          title:'Terraform helper script. Simplifies and ensures consistency in Terraform cli commands.',
           href: 'https://github.com/xybersolve/xs-tf',
-          description: 'Bash helper script, for Terraform file based state projects. Simplifies and shortens cli commands',
+          description: 'Bash helper script, for Terraform file based state projects. Simplifies and shortens cli commands.',
           notes: 'Terraform validate, init, plan, apply, destroy wrapper...',
           technology: ['terraform', 'bash'],
-          sortOrder: 20
+          sortOrder: 15
         }, {
           name:'jinks',
           title:'Jenkins docker managment script',
           href: 'https://github.com/xybersolve/jinks',
-          description: 'Bash script to manage docker blueocean deployment',
+          description: 'Bash script to manage docker blueocean deployment.',
           notes: 'Jenkins, up, down, backup, restore, logs, ssh...',
           technology: ['jenkins', 'docker', 'compose', 'make', 'bash'],
           sortOrder: 20
@@ -61,6 +61,14 @@
           notes: 'Jenkins pipeline, docker image builder...',
           technology: ['jenkins', 'docker', 'make'],
           sortOrder: 35
+        }, {
+          name:'xs-janks',
+          title:'Jenkins war managment script',
+          href: 'https://github.com/xybersolve/xs-janks',
+          description: 'Bash script to manage war deployment of Jenkins.',
+          notes: 'Jenkins, start, stop, backup, restore, versions, etc...',
+          technology: ['jenkins', 'war', 'bash'],
+          sortOrder: 37
         }, {
           name:'Leads',
           title:'Angular Lead Management App',
