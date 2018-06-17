@@ -7,3 +7,7 @@
   "grunt-contrib-copy": "^0.7.0",
   "load-grunt-tasks": "^1.0.0",
 }
+
+"scripts" : {
+  "dev-server": "http-server ./ &",
+}

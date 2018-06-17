@@ -9,7 +9,7 @@
           name:'terraform_data_source_modules',
           title:'Custom Terraform Modules to lookup AWS or extant resources.',
           href: 'https://github.com/xybersolve/terraform-data-source-modules',
-          description: 'I find these lookup modules particularly useful, when one needs to grab existing resource ids or dynamically pull AMI Ids.',
+          description: 'I find these lookup modules useful, when one needs to grab existing resource ids or dynamically pull AMI Ids.',
           notes: 'Terraform data sources for resource lookup...',
           technology: ['terraform'],
           sortOrder: 20
@@ -17,8 +17,8 @@
           name:'tf',
           title:'Terraform helper script. Simplifies and ensures consistency in cli commands.',
           href: 'https://github.com/xybersolve/xs-tf',
-          description: 'Bash helper script, for Terraform file base state projects. Simplifies and shortens cli commands',
-          notes: 'Terraform init, plan, apply, destroy wrappers...',
+          description: 'Bash helper script, for Terraform file based state projects. Simplifies and shortens cli commands',
+          notes: 'Terraform validate, init, plan, apply, destroy wrapper...',
           technology: ['terraform', 'bash'],
           sortOrder: 20
         }, {
@@ -30,21 +30,21 @@
           technology: ['jenkins', 'docker', 'compose', 'make', 'bash'],
           sortOrder: 20
         }, {
-          name:'zeromq-requset-response-rest',
+          name:'zeromq-request-response-rest',
           title:'ZeroMQ Request/Response for a REST service',
-          href: 'https://github.com/xybersolve/xs-jenkins-blue',
+          href: 'https://github.com/xybersolve/xs-zeromq-req-res-rest',
           description: 'Typical intra-microservice communication using ZeroMQ, exposing REST endpoints',
           notes: 'Promise based request service, microservices, REST...',
-          technology: ['zeroqm', 'microservices', 'docker', 'make'],
+          technology: ['zeromq', 'microservices', 'docker', 'jenkins', 'make'],
           sortOrder: 25
-        }, {
-          name:'zeromq-push-pull',
-          title:'ZeroMQ Request/Response for REST service',
-          href: 'https://github.com/xybersolve/xs-jenkins-blue',
-          description: 'ZeroMQ intra-microservice communication example with REST endpoint',
-          notes: 'Promise based request service, microservices...',
-          technology: ['zeroqm', 'microservices', 'docker', 'make'],
-          sortOrder: 25
+        // }, {
+        //   name:'zeromq-push-pull',
+        //   title:'ZeroMQ Push/Pull for REST service',
+        //   href: 'https://github.com/xybersolve/xs-zeromq-push-pull',
+        //   description: 'ZeroMQ intra-microservice communication push/pull examples',
+        //   notes: 'Promise based request service, microservices...',
+        //   technology: ['zeromq', 'microservices', 'docker', 'make'],
+        //   sortOrder: 25
         }, {
           name:'xs-zeromq-node-base',
           title:'ZeroMQ and node docker base image builder',
