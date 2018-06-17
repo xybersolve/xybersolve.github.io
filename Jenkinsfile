@@ -31,11 +31,13 @@ node {
   }
 
   /*
-  stage('Push image') {
-    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-      app.push("${env.BUILD_NUMBER}")
-      app.push("latest")
-    }
+  stage('Push Web') {
+    // Jenkins withCredentials and make
+    withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+      sh "make login user=${env.dockerHubUser} pass=${env.dockerHubPassword}"
+      sh 'make push-web'
+      }
   }
   */
+
 }
