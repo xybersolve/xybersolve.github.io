@@ -9,7 +9,7 @@
     "watch" : "gulp watch",
     "build:prod": "NODE_ENV=production gulp build:all",
     "build:dev": "NODE_ENV=development gulp build:all",
-    "dev-server": "http-server ./ &",
+    "dev-server": "http-server ./",
     "gulp": "gulp",
     "archive:project": "gulp archive:project",
     "archive:build": "gulp archive:build",
