@@ -10,8 +10,8 @@ CONTAINER_BUILD := gmilligan.build
 FILE_BUILD := Dockerfile.build
 
 # Web variables
-IMAGE_WEB := xybersolve/gmilligan.web
-CONTAINER_WEB := gmilligan.web
+IMAGE_WEB := xybersolve/gmilligan
+CONTAINER_WEB := gmilligan
 FILE_WEB := Dockerfile.nginx
 
 # git commit hash
@@ -31,7 +31,7 @@ clean-build:
 	@docker container rm $(CONTAINER_BUILD) || true
 	@docker image rm $(IMAGE_BUILD) || true
 
-build-build: clean
+build-build: clean-build
 	${INFO} "Build Angular project..."
 	#@npm run build
 	@docker build -t $(IMAGE_BUILD) -f $(FILE_BUILD) .
