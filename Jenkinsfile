@@ -1,13 +1,8 @@
 node {
-  def app
+
   stage('Checkout') {
     checkout scm
   }
-
-  # encapsulated in Makefile
-  #stage('Clean') {
-  #  sh 'make clean-build'
-  #}
 
   stage('Build') {
     sh 'make build-build'
