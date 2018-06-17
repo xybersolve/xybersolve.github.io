@@ -33,11 +33,8 @@ clean-build:
 
 build-build: clean-build
 	${INFO} "Build Angular project..."
-	#@npm run build
 	@docker build -t $(IMAGE_BUILD) -f $(FILE_BUILD) .
 	@docker ru1n --name $(CONTAINER_BUILD) -d $(IMAGE_BUILD)
-	# most recently built container
-	#$$(docker ps -alq)
 	@docker cp $(CONTAINER_BUILD):/usr/app/build/. build
 	${SUCCESS} "Built Angular project"
 
