@@ -1,0 +1,19 @@
+FROM node:6.5
+
+#Install bower to command line
+RUN npm install -g bower gulp
+
+# Define the host folder that will contain the code
+WORKDIR /app
+
+# Copy src to application host folder**
+ADD . /app
+
+# RUN move to /application/public/webapp where there is a bower.json file and install it**
+RUN cd /app
+RUN bower install --allow-root --config.interactive=false
+RUN npm install
+
+# ENTRYPOINT ["npm"]
+
+CMD ["npm", build-all"]
