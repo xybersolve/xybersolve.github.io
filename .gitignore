@@ -10,6 +10,7 @@ test
 slider
 *.css
 
-node_modules
-vendor
+# require these for legacy in-place build
+#node_modules
+#vendor
 hold
