@@ -7,9 +7,11 @@ pipeline {
       }
     }
     stage('credntials') {
-      withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'pass', usernameVariable: 'user')]) {
-        echo "user: ${env.user}"
-        echo "pass: ${env.pass}"
+      steps {
+        withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'pass', usernameVariable: 'user')]) {
+          echo "user: ${env.user}"
+          echo "pass: ${env.pass}"
+        }  
       }
     }
     /*
