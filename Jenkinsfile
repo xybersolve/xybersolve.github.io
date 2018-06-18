@@ -6,15 +6,7 @@ pipeline {
         checkout scm
       }
     }
-    stage('credntials') {
-      steps {
-        withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'pass', usernameVariable: 'user')]) {
-          echo "user: ${env.user}"
-          echo "pass: ${env.pass}"
-        }  
-      }
-    }
-    /*
+
     stage('Build') {
       steps {
         sh 'make build-build'
@@ -35,12 +27,13 @@ pipeline {
 
     stage('Push Web') {
       steps {
-        sh 'make login'
-        sh 'make push-web'
+        withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'pass', usernameVariable: 'user')]) {
+          sh "make login user=${user} pass=${pass}"
+          sh 'make push-web'
+        }
       }
     }
-    */
-  }
+  }  
 }
 
 /*
