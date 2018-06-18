@@ -11,8 +11,8 @@ CONTAINER_BUILD := gmilligan.build
 FILE_BUILD := Dockerfile.build
 
 # Web variables
-IMAGE_WEB := xybersolve/gmilligan
-CONTAINER_WEB := gmilligan
+IMAGE_WEB := xybersolve/gmilligan.web
+CONTAINER_WEB := gmilligan.web
 FILE_WEB := Dockerfile.nginx
 
 # git commit hash
@@ -70,8 +70,8 @@ test-web:
 
 tag-web:
 	${INFO} "Tagging web image..."
-	@docker tag $(IMAGE_WEB) $(ORG)/$(IMAGE_WEB):$(GIT_SHORT)
 	@docker tag $(IMAGE_WEB) $(ORG)/$(IMAGE_WEB):latest
+	#@docker tag $(IMAGE_WEB) $(ORG)/$(IMAGE_WEB):$(GIT_SHORT)
 
 login:
 	${INFO} "Logging into DockerHub..."
@@ -80,8 +80,8 @@ login:
 
 push-web:
 	${INFO} "Push web image"
-	@docker push $(ORG)/$(IMAGE_WEB):$(GIT_SHORT)
 	@docker push $(ORG)/$(IMAGE_WEB):latest
+	#@docker push $(ORG)/$(IMAGE_WEB):$(GIT_SHORT)
 #
 # Jenkins routines end here
 # -------------------------------------------

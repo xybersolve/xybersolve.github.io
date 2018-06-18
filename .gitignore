@@ -9,7 +9,10 @@ test
 slider
 *.css
 
-# require these for legacy in-place build
+hold
+# require following 2 directories for legacy in-place build, when using Jenkins,
+# i.e, building for swarm
+# however, must be bypassed when pushing for GitHub Pages,
+# as vendor/ breaks their parser
 #node_modules
 #vendor
-hold
