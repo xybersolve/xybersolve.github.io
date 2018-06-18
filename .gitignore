@@ -14,5 +14,5 @@ hold
 # i.e, building for swarm
 # however, must be bypassed when pushing for GitHub Pages,
 # as vendor/ breaks their parser
-#node_modules
-#vendor
+node_modules/
+vendor/
