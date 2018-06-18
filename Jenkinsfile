@@ -6,39 +6,48 @@ pipeline {
         checkout scm
       }
     }
-
+    stage('credntials') {
+      withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'pass', usernameVariable: 'user')]) {
+        echo "user: ${env.user}"
+        echo "pass: ${env.pass}"
+      }
+    }
+    /*
     stage('Build') {
       steps {
         sh 'make build-build'
       }
     }
 
-  stage('Build Web') {
-    steps {
-      sh 'make build-web'
+    stage('Build Web') {
+      steps {
+        sh 'make build-web'
+      }
     }
-  }
 
-  stage('Tag Web') {
-    steps {
-      sh 'make tag-web'
+    stage('Tag Web') {
+      steps {
+        sh 'make tag-web'
+      }
     }
-  }
 
-  stage('Push Web') {
-    steps {
-      sh 'make login'
-      sh 'make push-web'
+    stage('Push Web') {
+      steps {
+        sh 'make login'
+        sh 'make push-web'
+      }
     }
+    */
   }
 }
 
+/*
 node {
 
   stage('Checkout') {
     checkout scm
   }
-  /*
+
   stage('Build') {
     sh 'make build-build'
   }
@@ -50,13 +59,10 @@ node {
   stage('Tag Web') {
     sh 'make tag-web'
   }
-  */
-
-  /*
   stage('Push Web') {
     sh 'make login'
     sh 'make push-web'
-  }*/
+  }
 
   stage('Push Web') {
     steps {
@@ -66,7 +72,7 @@ node {
       }
     }
   }
-  /*
+
   stage('Push Web') {
     // Jenkins withCredentials and make
     withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
