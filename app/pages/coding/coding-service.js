@@ -5,14 +5,23 @@
     .factory('codingSvc', [function () {
       var model = {};
       model.projects = [
+
         {
+          name:'terraform_gsuite_aws_module',
+          title:'Custom Terraform Module to map DNS for corporate email via GSuite.',
+          href: 'https://github.com/xybersolve/terraform_gsuite_aws_module',
+          description: 'Custom Terraform module automates Route53 MX, TXT & CNAME record creation for Google Gsuite email and application subdomains.',
+          notes: 'Terraform module for easy 3rd party doamin email service, via Google...',
+          technology: ['terraform', 'AWS', 'Route53', 'gsuite', 'google'],
+          sortOrder: 8
+        }, {
           name:'terraform_data_source_modules',
           title:'Custom Terraform Modules to lookup AWS or extant resources.',
           href: 'https://github.com/xybersolve/terraform-data-source-modules',
           description: 'These lookup data modules are useful when one needs to grab existing resources ids or pull AMI Ids.',
           notes: 'Terraform data sources for resource lookup...',
-          technology: ['terraform'],
-          sortOrder: 10
+          technology: ['terraform', 'AWS'],
+          sortOrder: 33
         }, {
           name:'tf',
           title:'Terraform helper script. Simplifies and ensures consistency in Terraform cli commands.',
@@ -37,22 +46,41 @@
           notes: 'Promise based request service, microservices, REST...',
           technology: ['zeromq', 'microservices', 'docker', 'jenkins', 'make'],
           sortOrder: 25
-        // }, {
-        //   name:'zeromq-push-pull',
-        //   title:'ZeroMQ Push/Pull for REST service',
-        //   href: 'https://github.com/xybersolve/xs-zeromq-push-pull',
-        //   description: 'ZeroMQ intra-microservice communication push/pull examples',
-        //   notes: 'Promise based request service, microservices...',
-        //   technology: ['zeromq', 'microservices', 'docker', 'make'],
-        //   sortOrder: 25
+        }, {
+          name:'zeromq-push-pull',
+          title:'ZeroMQ Push/Pull for REST service',
+          href: 'https://github.com/xybersolve/xs-zeromq-push-pull',
+          description: 'ZeroMQ intra-microservice communication push/pull examples',
+          notes: 'Promise based request service, microservices...',
+          technology: ['zeromq', 'nodeJS', 'microservices', 'docker', 'make'],
+          sortOrder: 36
         }, {
           name:'xs-zeromq-node-base',
           title:'ZeroMQ and node docker base image builder',
           href: 'https://github.com/xybersolve/xs-zeromq-node-base',
           description: 'ZeroMQ node base image provides node based socket communications between microservices, for lightweight collaboration',
           notes: 'ZeroMQ node base image, consumers: req-rel, pub-sub, broker-worker microservice projects',
-          technology: ['docker', 'microservice', 'zeromq', 'jenkins', 'make', 'node'],
+          technology: ['docker', 'nodeJS','microservices', 'zeromq', 'jenkins', 'make'],
           sortOrder: 30
+
+
+        }, {
+          name:'terraform-s3-subdomain',
+          title:'Terraform S3 Static Website',
+          href: 'https://github.com/xybersolve/terraform-s3-subdomain',
+          description: 'Terraform service to create static S3 website, with Route53 subdomain & www records',
+          notes: 'Terraform: AWS, S3, Route53 for a quick and easy static website as subdomain',
+          technology: ['terraform', 'AWS', 'S3', 'Route53', 'bash'],
+          sortOrder: 32
+
+        }, {
+          name:'xybersolve.io',
+          title:'xybersolve.io',
+          href: 'https://github.com/xybersolve/xybersolve.github.io',
+          description: 'Angular github page, with code project links and photography slideshow. Currently published as S3 static website',
+          notes: 'Gulp automation',
+          technology: ['jenkins', 'docker', 'AWS', 'S3', 'make', 'angular 1.3' ,'bootstrap 3.x', 'gulp'],
+          sortOrder: 34
         }, {
           name:'xs-jenkins-blue',
           title:'Jenkins automated BlueOcean image builder',
@@ -60,7 +88,7 @@
           description: 'Builds extensible workspace version of Jenkins BlueOcean, pushed to Docker Hub.',
           notes: 'Jenkins pipeline, docker image builder...',
           technology: ['jenkins', 'docker', 'make'],
-          sortOrder: 35
+          sortOrder: 2
         }, {
           name:'xs-janks',
           title:'Jenkins war managment script',
@@ -75,7 +103,7 @@
           href: 'https://github.com/gmilligan/Leads',
           description: 'Manage and track leads.',
           notes: 'MEAN Fullstack, Angular 1.3 features: form validation, $q, etc...',
-          technology: ['angular 1.3' , 'gulp', 'bootstrap 3.x', 'MEAN', 'mongodb', 'node', 'express 4.x'],
+          technology: ['angular 1.3' , 'gulp', 'bootstrap 3.x', 'MEAN', 'mongodb', 'nodeJS', 'express 4.x'],
           sortOrder: 40
         }, {
           name:'xs-angular-cache-service',
@@ -94,14 +122,6 @@
           technology: ['angular 1.2' , 'bootstrap 3.x', 'protractor', 'grunt'],
           sortOrder: 50
         }, {
-          name:'jQM-MVC-Lazy-Loader',
-          title:'jQuery Mobile Lazy Loading MVC',
-          href: 'https://github.com/gmilligan/jQM-MVC-Lazy-Loader',
-          description: 'Super lightweight MVC for jQuery Mobile that lazy loads modules. A handful of helper methods on the "app" object assist UI development.',
-          notes: 'Demo',
-          technology: ['jquery mobile 1.4', 'grunt'],
-          sortOrder: 75
-        }, {
           name:'mongowrap',
           title:'MongoDB Wrapper',
           href: 'https://github.com/gmilligan/mongowrap',
@@ -110,14 +130,6 @@
           technology: ['mongodb', 'node', 'grunt'],
           sortOrder: 80
         }, {
-          name:'gmilligan.github.io',
-          title:'gmilligan.github.io',
-          href: 'https://github.com/gmilligan/gmilligan.github.io',
-          description: 'Angular github page, with code project links and photography slideshow.',
-          notes: 'Gulp automation',
-          technology: ['angular 1.3' ,'bootstrap 3.x', 'gulp'],
-          sortOrder: 85
-        }, {
           name:'xs-angular-ui-components',
           title:'Angular UI Components',
           href: 'https://github.com/gmilligan/xs-angular-ui-components',
@@ -125,15 +137,7 @@
           notes: '',
           technology: ['angular 1.2' , 'grunt'],
           sortOrder: 90
-        }, {
-          name:'xs-dom-single-node-lib',
-          title:'Speedy DOM Manipulation Library',
-          href: 'https://github.com/gmilligan/xs-dom-single-node-lib',
-          description: 'Speed oriented DOM manipulation library. For speedy targeted manipulating of single HTMLElement nodes',
-          notes: 'Test: QUnit unit testing',
-          technology: ['Raw JavaScript'],
-          sortOrder: 95
-        }, {
+          }, {
           name:'xs-angular-wizard',
           title:'Angular Wizard Widget',
           href: 'https://github.com/gmilligan/xs-angular-wizard/tree/v1.0',

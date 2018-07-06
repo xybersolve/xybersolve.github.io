@@ -1,43 +1,57 @@
 @margin-bottom-base: 1px;
 @margin-top-base: 4px;
 @margin-fix-toolbar: 70px;
-
+/*
 @header-font-family: 'Lobster', Georgia, Times, serif;
 @header-font-size-base: 13px;
-@body-font-family-base: 'Cabin', Helvetica, Arial, sans-serif;
+@body-font-family: 'Cabin', Helvetica, Arial, sans-serif;
 @body-font-size-base: 15px;
 
 @header-font-family: 'Allan', Helvetica, Arial, sans-serif;
 @header-font-size-base: 13px;
-@body-font-family-base:  'Cardo', Georgia, Times, serif;
+@body-font-family:  'Cardo', Georgia, Times, serif;
 @body-font-size-base: 18px;
 
 @header-font-family: 'Molengo', Georgia, Times, serif;
 @header-font-size-base: 14px;
 @header-font-weight: bold;
-@body-font-family-base: 'Lekton', Helvetica, Arial, sans-serif;
+@body-font-family: 'Lekton', Helvetica, Arial, sans-serif;
 @body-font-size-base: 13px;
 
 @header-font-family: 'Droid Serif', Georgia, Times, serif;
 @header-font-size-base: 14px;
 @header-font-weight: bold;
-@body-font-family-base: 'Droid Sans', Helvetica, Arial, sans-serif;
+@body-font-family: 'Droid Sans', Helvetica, Arial, sans-serif;
 @body-font-size-base: 14px;
 
 @header-font-family: 'Corben', Georgia, Times, serif;
 @header-font-size-base: 11px;
 @header-font-weight: normal;
-@body-font-family-base: 'Nobile', Helvetica, Arial, sans-serif;
+@body-font-family: 'Nobile', Helvetica, Arial, sans-serif;
 @body-font-size-base: 13px;
+*/
+/*
+@import url(https://fonts.googleapis.com/css?family=Montserrat:700|Roboto:400,400italic,700);
+@header-font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@header-font-size-base: 14px;
+@header-font-weight: bold;
+@header-color: #333;
 
+@body-font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@body-font-size-base: 15px;
+@body-color: #222222;
+*/
+
+@import url(https://fonts.googleapis.com/css?family=Cardo:700|Lato:400,400italic,700);
 @header-font-family: 'Cardo', Georgia, Times, serif;
 @header-font-size-base: 14px;
 @header-font-weight: bold;
-@header-color: #808080;
+@header-color: #333;
 
-@body-font-family-base: "Lato", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+@body-font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
 @body-font-size-base: 15px;
-@body-font-color: #222222;
+@body-color: #222222;
+
 
 @line-height-base: 1.5;
 
@@ -92,13 +106,13 @@ body {
   min-height: 600px;
   padding-top: @margin-fix-toolbar; /* toolbar tweak */
 
-  font-family: @body-font-family-base;
+  font-family: @body-font-family;
   font-size: @body-font-size-base;
   line-height: @line-height-base;
-  color: @body-font-color;
+  color: @body-color;
 }
 
-h1,h2,h3,h4,h5 {
+h1,h2,h3,h4,h5,h6 {
   font-family: @header-font-family;
   font-weight: @header-font-weight;
   color: @header-color;
@@ -108,31 +122,28 @@ h1,h2,h3,h4,h5 {
 h1 {
   font-size: @header-font-size-base + 8 ;
   margin: @margin-top-base + 16 0 @margin-bottom-base + 6 0;
-  color: #444
 }
 h2 {
   font-size: @header-font-size-base + 10;
   margin: @margin-top-base + 14 0 @margin-bottom-base + 6 0;
-  color: #444;
 }
 h3 {
   font-size: @header-font-size-base + 4;
   margin: @margin-top-base + 14 0 @margin-bottom-base + 6 0;
-  color: #444;
 }
 h4 {
   font-size: @header-font-size-base + 3;
   margin: @margin-top-base + 12 0 @margin-bottom-base + 4 0;
-  color: #444;
 }
 h5 {
   font-size: @header-font-size-base + 2;
-  margin: @margin-top-base + 10 0 @margin-bottom-base + 2 0;
+  margin: @margin-top-base + 12 0 @margin-bottom-base + 4 0;
 }
 h6 {
   font-size: @header-font-size-base + 1;
-  margin: @margin-top-base + 8 0 @margin-bottom-base + 2 0;
+  margin: @margin-top-base + 12 0 @margin-bottom-base + 4 0;
 }
+
 /*----------------------------------------------------------------------------
   Global Layout
 ----------------------------------------------------------------------------*/
@@ -145,7 +156,7 @@ p {
 }
 
 b {
-  color: #666 !important;
+  color: #444 !important;
 }
 
 address {
