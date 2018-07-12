@@ -6,10 +6,10 @@
 
       <ul class="list-group projects">
         <li class="list-group-item" ng-repeat="project in coding.projects | orderBy: 'sortOrder'">
+          <i class="{{project.fa}}" style="margin-right:6px;"></i>
           <a href="{{project.href}}"
              target="_blank"
              class="project-title">
-
               {{project.title}}
           </a>
 

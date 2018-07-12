@@ -169,7 +169,11 @@ gulp
       .pipe(gulpIf(useGzip===true, gzip()))
       .pipe(gulp.dest('./build'));
   })
-
+  .task('fonts', function() {
+    return gulp
+      .src('node_modules/font-awesome/fonts/*')
+      .pipe(gulp.dest('./build/fonts'))
+  })
   // ------------------------------------------------
   // Archive Tasks
   //
@@ -216,6 +220,7 @@ gulp
     gutil.log('build:js complete');
   })
   //.task('build:all', ['clean:pre', 'jshint', 'js', 'css', 'clean:post'], function(){
+  // .task('build:all', ['clean:pre', 'js', 'fonts', 'css', 'clean:post'], function(){
   .task('build:all', ['clean:pre', 'js', 'css', 'clean:post'], function(){
     gutil.log('build:all complete');
   })
