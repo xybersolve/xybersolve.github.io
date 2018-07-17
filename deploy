@@ -43,8 +43,8 @@ trap 'echo "Aborting due to errexit on line $LINENO. Exit code: ${?}" >&2' ERR
 # booleans
 declare -ir TRUE=1
 declare -ir FALSE=0
-# script info
 
+# script info
 declare -r PROGNAME="$(basename ${0})"
 declare -r VERSION=0.0.1
 declare -r SUBJECT=""
@@ -76,7 +76,7 @@ EOF
 )
 # files & directories
 declare -r SCRIPT_DIR="$( dirname ${0} )"
-declare -r CONF_FILE="${SCRIPT_DIR}/web.conf.sh"
+declare -r CONF_FILE="${SCRIPT_DIR}/deploy.conf.sh"
 
 # actions
 declare -i SYNC=${FALSE}
@@ -96,15 +96,33 @@ declare -i DRY_RUN=${FALSE}
 # script globals
 declare DIRECTORY=''
 
+# colors
+declare _xsRESET='\e[0m'
+declare _xsDEFAULT='\e[39m'
+declare _xsRED='\e[31m'
+declare _xsGREEN='\e[32m'
+declare _xsYELLOW='\e[33m'
+declare _xsBLUE='\e[34m'
+declare _xsMAGENTA='\e[35m'
+declare _xsCYAN='\e[36m'
+declare _xsLIGHTGRAY='\e[37m'
+declare _xsDARKGRAY='\e[90m'
+declare _xsLIGHTRED='\e[91m'
+declare _xsLIGHTGREEN='\e[92m'
+declare _xsLIGHTYELLOW='\e[93m'
+declare _xsLIGHTBLUE='\e[94m'
+declare _xsLIGHTMAGENTA='\e[95m'
+declare _xsLIGHTCYAN='\e[96m'
+declare _xsWHITE='\e[97m'
 # ---------------------------------------
 # COMMON FUNCTIONS
 # ---------------------------------------
 usage() {
-  echo "${SYNTAX}"
+  printf "${_xsYELLOW}%s${_xsRESET}\n" "${SYNTAX}"
 }
 
 error() {
-  printf "\n%s\n" "Error: ${1}"
+  printf "\n${_xsLIGHTRED}%s${_xsRESET}\n" "Error: ${1}"
 }
 
 die() {
@@ -120,9 +138,9 @@ show_version() {
 }
 
 show_help() {
-  printf "\n\n"
+  printf "\n\n${_xsYELLOW}"
   usage
-  printf "\n\n"
+  printf "${_xsRESET}\n\n"
   exit 0
 }
 
@@ -189,6 +207,10 @@ __size() {
     --query "[sum(Contents[].Size), length(Contents[])]"
 }
 
+__check_aws() {
+  which aws &>/dev/null || die "AWS was not available, run virtualenv?" 2
+}
+
 __get_opts() {
   while (( $# > 0 )); do
     local arg="${1}"; shift;
@@ -221,6 +243,9 @@ __get_opts() {
 }
 
 __dispatch() {
+
+  __check_aws
+
   (( LIST )) && __list
   (( SYNC )) && __sync
   (( UPLOAD )) && __upload

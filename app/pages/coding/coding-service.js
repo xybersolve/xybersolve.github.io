@@ -35,7 +35,7 @@
         }, {
 
           name:'tf',
-          fa: 'fas fa-terminal',
+          fa: 'fab fa-aws',
           title:'Terraform helper script. Simplifies and ensures consistency in Terraform cli commands.',
           href: 'https://github.com/xybersolve/xs-tf',
           description: 'Bash helper script, for Terraform file based state projects. Simplifies and shortens cli commands.',
@@ -51,6 +51,15 @@
           notes: 'Jenkins, up, down, backup, restore, logs, ssh...',
           technology: ['jenkins', 'docker', 'compose', 'make', 'bash'],
           sortOrder: 20
+        }, {
+          name:'terraform_r53_web_host_module',
+          fa: 'fab fa-aws',
+          title:'Terraform module wraps Route53 creation host zone and website records',
+          href: 'https://github.com/xybersolve/terraform_r53_web_host_module',
+          description: 'Creates host zone, NS and A records for site and www-site',
+          notes: 'Can be used to map an AWS resources for domain registered on non-AWS registror...',
+          technology: ['Terraform', 'AWS', 'Route53'],
+          sortOrder: 23
         }, {
           name:'zeromq-request-response-rest',
           fa: 'fab fa-node-js',

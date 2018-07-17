@@ -13,7 +13,8 @@
     "gulp": "gulp",
     "archive:project": "gulp archive:project",
     "archive:build": "gulp archive:build",
-    "debug": "gulp show:filePaths"
+    "debug": "gulp show:filePaths",
+    "deploy": "./deploy --upload"
   },
   "repository": {
     "type": "git",
