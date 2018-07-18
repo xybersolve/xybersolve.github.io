@@ -15,7 +15,15 @@
       var model = {};
       model.projects = [
         {
-          name:'xs-jenkins-blue',
+          name:'antsy',
+          fa: 'fas fa-cloud',
+          title:'Antsy - Manage Ansible projects, setup and configuration',
+          href: 'https://github.com/xybersolve/antsy',
+          description: 'Antsy - Manage Ansible projects, setup and configuration',
+          notes: 'Install, setup, roles, sync ansible code to bastion server ...',
+          technology: ['bash', 'script', 'ansible'],
+          sortOrder: 5
+        }, {          name:'xs-jenkins-blue',
           fa: 'fab fa-docker',
           title:'Jenkins automated BlueOcean image builder',
           href: 'https://github.com/xybersolve/xs-jenkins-blue',
@@ -29,7 +37,7 @@
           title:'Custom Terraform Module to map DNS for corporate email via GSuite.',
           href: 'https://github.com/xybersolve/terraform_gsuite_aws_module',
           description: 'Custom Terraform module automates Route53 MX, TXT & CNAME record creation for Google Gsuite email and application subdomains.',
-          notes: 'Terraform module for easy 3rd party doamin email service, via Google...',
+          notes: 'Terraform module for easy 3rd party domain email service, via Google...',
           technology: ['terraform', 'AWS', 'Route53', 'gsuite', 'google'],
           sortOrder: 5
         }, {
