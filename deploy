@@ -53,7 +53,7 @@ declare -ri MIN_ARG_COUNT=1
 declare -r SYNTAX=$(cat <<EOF
 
     Script: ${PROGNAME}
-    Purpose: Manage content on S3 
+    Purpose: Manage content on S3
     Usage: ${PROGNAME} [options]
 
     Options:
@@ -82,6 +82,7 @@ declare -r CONF_FILE="${SCRIPT_DIR}/deploy.conf.sh"
 declare -i SYNC=${FALSE}
 declare -i UPLOAD=${FALSE}
 declare -i UPLOAD_DIR=${FALSE}
+declare -i UPLOAD_FILE=${TRUE}
 declare -i DELETE=${FALSE}
 declare -i DELETE_ALL=${FALSE}
 declare -i DELETE_DIR=${FALSE}
@@ -95,6 +96,7 @@ declare -i DRY_RUN=${FALSE}
 
 # script globals
 declare DIRECTORY=''
+declare FILE=''
 
 # colors
 declare _xsRESET='\e[0m'
@@ -179,6 +181,12 @@ __upload_dir() {
     --exclude '*DS_Store*'
 }
 
+__upload_file() {
+  [[ -f "${DIRECTORY}" ]] && die "Directory argument is required" 2
+
+  aws s3 cp "${SITE_DIR}/${FILE}" s3://${SITE_BUCKET}/${FILE}
+}
+
 __delete_dir() {
   aws s3 rm s3://${DIRECTORY}/ --recursive
 }
@@ -221,6 +229,10 @@ __get_opts() {
         [[ ${arg} =~ '=' ]] && DIRECTORY="${arg#*=}"
         ;;
       --upload)          UPLOAD=${TRUE}      ;;
+      --upload-file*)
+        UPLOAD_FILE=${TRUE}
+        [[ ${arg} =~ '=' ]] && FILE="${arg#*=}"
+        ;;
       --delete)          DELETE=${TRUE}      ;;
       --delete-all)      DELETE_ALL=${TRUE}  ;;
       --delete-dir*)
@@ -250,6 +262,7 @@ __dispatch() {
   (( SYNC )) && __sync
   (( UPLOAD )) && __upload
   (( UPLOAD_DIR )) && __upload_dir
+  (( UPLOAD_FILE )) && __upload_file
   (( DELETE )) && __delete
   (( DELETE_ALL )) && __delete_all
   (( DELETE_DIR )) && __delete_dir
