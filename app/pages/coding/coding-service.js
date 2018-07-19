@@ -64,7 +64,7 @@
           fa: 'fab fa-aws',
           title:'Terraform module wraps Route53 creation host zone and website records',
           href: 'https://github.com/xybersolve/terraform_r53_web_host_module',
-          description: 'Creates host zone, NS and A records for site and www-site',
+          description: 'Creates host zone, NS and A or CNAME records for site and www-site',
           notes: 'Can be used to map an AWS resources for domain registered on non-AWS registror...',
           technology: ['Terraform', 'AWS', 'Route53'],
           sortOrder: 23
