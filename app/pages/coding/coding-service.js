@@ -15,15 +15,25 @@
       var model = {};
       model.projects = [
         {
+          name:'terraform_gsuite_aws_module',
+          fa: 'fab fa-aws',
+          title:'Custom Terraform Module to map DNS for corporate email via GSuite.',
+          href: 'https://github.com/xybersolve/terraform_gsuite_aws_module',
+          description: 'Custom Terraform module automates Route53 MX, TXT & CNAME record creation for Google Gsuite email and application subdomains.',
+          notes: 'Terraform module for easy 3rd party domain email service, via Google...',
+          technology: ['terraform', 'AWS', 'Route53', 'gsuite', 'google'],
+          sortOrder: 3
+        },  {
           name:'antsy',
-          fa: 'fas fa-cloud',
+          fa: 'fas fa-magic',
           title:'Antsy - Manage Ansible projects, setup and configuration',
           href: 'https://github.com/xybersolve/antsy',
           description: 'Antsy - Manage Ansible projects, setup and configuration',
           notes: 'Install, setup, roles, sync ansible code to bastion server ...',
           technology: ['bash', 'script', 'ansible'],
           sortOrder: 5
-        }, {          name:'xs-jenkins-blue',
+        }, {
+          name:'xs-jenkins-blue',
           fa: 'fab fa-docker',
           title:'Jenkins automated BlueOcean image builder',
           href: 'https://github.com/xybersolve/xs-jenkins-blue',
@@ -32,14 +42,14 @@
           technology: ['jenkins', 'docker', 'make'],
           sortOrder: 10
         }, {
-          name:'terraform_gsuite_aws_module',
+          name:'xs-aws-bash-scripts',
           fa: 'fab fa-aws',
-          title:'Custom Terraform Module to map DNS for corporate email via GSuite.',
-          href: 'https://github.com/xybersolve/terraform_gsuite_aws_module',
-          description: 'Custom Terraform module automates Route53 MX, TXT & CNAME record creation for Google Gsuite email and application subdomains.',
-          notes: 'Terraform module for easy 3rd party domain email service, via Google...',
-          technology: ['terraform', 'AWS', 'Route53', 'gsuite', 'google'],
-          sortOrder: 5
+          title:'AWS utility frontend bash script library',
+          href: 'https://github.com/xybersolve/xs-aws-bash-scripts',
+          description: 'Goal: Independent AWS library bash scripts, with utility frontends',
+          notes: 'Manage AWS: EC2, Images, Elastic IPs, Auto-Scaling Groups, Route 53, Monitor, Metric, Alarms, etc...',
+          technology: ['bash', 'aws'],
+          sortOrder: 12
         }, {
 
           name:'tf',

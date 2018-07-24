@@ -1,3 +1,5 @@
+
+
 @margin-bottom-base: 1px;
 @margin-top-base: 4px;
 @margin-fix-toolbar: 70px;
@@ -40,6 +42,11 @@
 @body-font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
 @body-font-size-base: 15px;
 @body-color: #222222;
+*/
+/*
+@import "font-awesome/less/fontawesome.less";
+@fa-font: "font-awesome/less/webfonts/";
+@fa-font-name: "fontawesome-webfont";
 */
 
 @import url(https://fonts.googleapis.com/css?family=Cardo:700|Lato:400,400italic,700);
@@ -212,6 +219,8 @@ ul.projects {
 }
 
 .project-notes {
+  margin-top:0;
+  padding-top:0;
   font-size: 13px;
   font-style: italic;
   color: #808080;
@@ -332,6 +341,12 @@ a.project-title:visited {
   /*padding-right: 6px !important;*/
   min-width:30px;
   text-align: center;
+}
+
+.xs-icon-left {
+  /*padding-right: 6px !important;*/
+  min-width:25px;
+  text-align: left;
 }
 
 .xs-light {
