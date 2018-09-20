@@ -64,6 +64,7 @@ declare -r SYNTAX=$(cat <<EOF
       --upload: Upload all pertinent files and directories
       --updoad-file=<file>: TODO
       --upload-dir=<directory>: Upload a given directory
+      --upload-res*: Upload newest resume
       --delete-file=<file>: TODO
       --delete-dir=<directory>: Delete a directory
       --delete-all: Delete all content
@@ -82,7 +83,9 @@ declare -r CONF_FILE="${SCRIPT_DIR}/deploy.conf.sh"
 declare -i SYNC=${FALSE}
 declare -i UPLOAD=${FALSE}
 declare -i UPLOAD_DIR=${FALSE}
-declare -i UPLOAD_FILE=${TRUE}
+declare -i UPLOAD_FILE=${FALSE}
+declare -i UPLOAD_RESUME=${FALSE}
+declare -i UPLOAD_LETTER=${FALSE}
 declare -i DELETE=${FALSE}
 declare -i DELETE_ALL=${FALSE}
 declare -i DELETE_DIR=${FALSE}
@@ -219,6 +222,26 @@ __check_aws() {
   which aws &>/dev/null || die "AWS was not available, run virtualenv?" 2
 }
 
+__upload_resume() {
+  [[ -f "${RESUME_PATH}" ]] || die "Resume was not found: ${RESUME_PATH}." 4
+  aws s3 cp "${RESUME_PATH}" s3://${SITE_BUCKET}/documents/${RESUME_FILE}
+}
+
+__upload_letter() {
+  [[ -f "${LETTER_PATH}" ]] || die "Cover letter was not found: ${LETTER_PATH}." 5
+  aws s3 cp "${LETTER_PATH}" s3://${SITE_BUCKET}/documents/${LETTER_FILE}
+}
+
+__open_resume() {
+  local dt=$( date +'%Y%m%d')
+  local tmp_file="/tmp/resume_${dt}"
+  #echo $tmp_file
+  aws s3 cp s3://${SITE_BUCKET}/documents/${RESUME_FILE} "${tmp_file}"
+  open -a 'Pages' "${tmp_file}"
+
+}
+
+
 __get_opts() {
   while (( $# > 0 )); do
     local arg="${1}"; shift;
@@ -233,6 +256,10 @@ __get_opts() {
         UPLOAD_FILE=${TRUE}
         [[ ${arg} =~ '=' ]] && FILE="${arg#*=}"
         ;;
+      --upload-res*)     UPLOAD_RESUME=${TRUE} ;;
+      --upload-letter)   UPLOAD_LETTER=${TRUE} ;;
+      --open-res*)
+        __open_resume; exit 0; ;;
       --delete)          DELETE=${TRUE}      ;;
       --delete-all)      DELETE_ALL=${TRUE}  ;;
       --delete-dir*)
@@ -263,6 +290,8 @@ __dispatch() {
   (( UPLOAD )) && __upload
   (( UPLOAD_DIR )) && __upload_dir
   (( UPLOAD_FILE )) && __upload_file
+  (( UPLOAD_RESUME )) && __upload_resume
+  (( UPLOAD_LETTER )) && __upload_letter
   (( DELETE )) && __delete
   (( DELETE_ALL )) && __delete_all
   (( DELETE_DIR )) && __delete_dir
