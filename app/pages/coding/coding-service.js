@@ -44,7 +44,7 @@
         }, {
           name:'xs-aws-bash-scripts',
           fa: 'fab fa-aws',
-          title:'AWS utility frontend bash script library',
+          title:'AWS bash script libraries with utility frontends',
           href: 'https://github.com/xybersolve/xs-aws-bash-scripts',
           description: 'Goal: Independent AWS library bash scripts, with utility frontends',
           notes: 'Manage AWS: EC2, Images, Elastic IPs, Auto-Scaling Groups, Route 53, Monitor, Metric, Alarms, etc...',

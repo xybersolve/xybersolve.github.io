@@ -3,7 +3,8 @@
 > Angular company shield, began life as a Github Page. It now resides as
 static AWS S3 website.
 
-Deploy script to keep code in sync on S3
+### Deploy script to keep code in sync on S3
+
 
 ```sh
 
@@ -28,6 +29,30 @@ $ ./deploy --help
     --remove-log: Remove the log bucket
     --list: List all the content
     --size: Show sizes
+
+```
+
+> `deploy.conf.sh` is expected but not provided for security reasons. Expected 
+variable are as follows:
+
+```sh
+declare -r SITE_DIR=
+declare -r RESUME_FILE=
+declare -r RESUME_DIR=
+declare -r RESUME_PATH=
+declare -r SITE_BUCKET=
+declare -r LOG_BUCKET=
+declare -ar FILES=(
+  'index.html'
+  '404.html'
+  'favicon.ico'
+)
+declare -ar DIRS=(
+  'app'
+  'build'
+  'documents'
+  'image'
+)
 
 ```
 
