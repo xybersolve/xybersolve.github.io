@@ -12,7 +12,7 @@ pipeline {
 
     stage('Build') {
       steps {
-        #sh 'make build-build'
+        //sh 'make build-build'
         sh 'npm run build:prod'
       }
     }
@@ -20,31 +20,32 @@ pipeline {
     stage('S3-Deploy') {
       steps {
         sh "aws s3 ls s3://${bucket}"
-        #sh "aws s3 cp ${build_dir}/app/ s3://${bucket}/app/"
-        #sh "aws s3 cp packaging/build/VERSION s3://${bucket}//"
+        //sh "aws s3 cp ${build_dir}/app/ s3://${bucket}/app/"
+        //sh "aws s3 cp packaging/build/VERSION s3://${bucket}//"
+      }
+    }
+    /*
+    stage('Build Web') {
+      steps {
+        sh 'make build-web'
       }
     }
 
-    #stage('Build Web') {
-    #  steps {
-    #    sh 'make build-web'
-    #  }
-    #}
+    stage('Tag Web') {
+      steps {
+        sh 'make tag-web'
+      }
+    }
 
-    #stage('Tag Web') {
-    #  steps {
-    #    sh 'make tag-web'
-    #  }
-    #}
-
-    #stage('Push Web') {
-    #  steps {
-    #    withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'pass', usernameVariable: 'user')]) {
-    #      sh "make login user=${user} pass=${pass}"
-    #      sh 'make push-web'
-    #    }
-    #  }
-    #}
+    stage('Push Web') {
+      steps {
+        withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'pass', usernameVariable: 'user')]) {
+          sh "make login user=${user} pass=${pass}"
+          sh 'make push-web'
+        }
+      }
+    }
+    */
   }
 }
 
