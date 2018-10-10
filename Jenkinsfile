@@ -1,3 +1,6 @@
+def bucket = 'xybersolve.io'
+def build_dir = '/Users/Greg/Sites/gmilligan.github.io'
+
 pipeline {
   agent any
   stages {
@@ -9,31 +12,40 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh 'make build-build'
+        #sh 'make build-build'
+        sh 'npm run build:prod'
       }
     }
 
-    stage('Build Web') {
+    stage('S3-Deploy') {
       steps {
-        sh 'make build-web'
+        sh "aws s3 ls s3://${bucket}"
+        #sh "aws s3 cp ${build_dir}/app/ s3://${bucket}/app/"
+        #sh "aws s3 cp packaging/build/VERSION s3://${bucket}//"
       }
     }
 
-    stage('Tag Web') {
-      steps {
-        sh 'make tag-web'
-      }
-    }
+    #stage('Build Web') {
+    #  steps {
+    #    sh 'make build-web'
+    #  }
+    #}
 
-    stage('Push Web') {
-      steps {
-        withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'pass', usernameVariable: 'user')]) {
-          sh "make login user=${user} pass=${pass}"
-          sh 'make push-web'
-        }
-      }
-    }
-  }  
+    #stage('Tag Web') {
+    #  steps {
+    #    sh 'make tag-web'
+    #  }
+    #}
+
+    #stage('Push Web') {
+    #  steps {
+    #    withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'pass', usernameVariable: 'user')]) {
+    #      sh "make login user=${user} pass=${pass}"
+    #      sh 'make push-web'
+    #    }
+    #  }
+    #}
+  }
 }
 
 /*
