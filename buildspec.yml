@@ -1,9 +1,12 @@
 version: 0.1
-
+#
+#  Codebuild build specification
+#
 phases:
   build:
     commands:
       - echo Build xybersolve.io
+      - npm run build:prod
 artifacts:
   files:
     - index.html
@@ -14,4 +17,3 @@ artifacts:
     - build/*
     - documents/*
     - image/*
- 
