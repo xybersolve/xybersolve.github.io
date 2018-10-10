@@ -1,3 +1,6 @@
+#
+# Jenkins - Docker build
+#
 .PHONY: clean-build build-build test-build \
 				clean-web build-web run-web test_web tag-web login push-web \
 				logs-build ssh-build logs-web ssh-web \

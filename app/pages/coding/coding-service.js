@@ -22,7 +22,7 @@
           description: 'Custom Terraform module automates Route53 MX, TXT & CNAME record creation for Google Gsuite email and application subdomains.',
           notes: 'Terraform module for easy 3rd party domain email service, via Google...',
           technology: ['terraform', 'AWS', 'Route53', 'gsuite', 'google'],
-          sortOrder: 3
+          sortOrder: 90
         },  {
           name:'antsy',
           fa: 'fas fa-magic',
@@ -31,7 +31,7 @@
           description: 'Antsy - Manage Ansible projects, setup and configuration',
           notes: 'Install, setup, roles, sync ansible code to bastion server ...',
           technology: ['bash', 'script', 'ansible'],
-          sortOrder: 5
+          sortOrder: 95
         }, {
           name:'xs-jenkins-blue',
           fa: 'fab fa-docker',
@@ -40,7 +40,7 @@
           description: 'Builds extensible workspace version of Jenkins BlueOcean, pushed to Docker Hub.',
           notes: 'Jenkins pipeline, docker image builder...',
           technology: ['jenkins', 'docker', 'make'],
-          sortOrder: 10
+          sortOrder: 100
         }, {
           name:'xs-aws-bash-scripts',
           fa: 'fab fa-aws',
@@ -49,7 +49,7 @@
           description: 'Goal: Independent AWS library bash scripts, with utility frontends',
           notes: 'Manage AWS: EC2, Images, Elastic IPs, Auto-Scaling Groups, Route 53, Monitor, Metric, Alarms, etc...',
           technology: ['bash', 'aws'],
-          sortOrder: 12
+          sortOrder: 105
         }, {
 
           name:'tf',
@@ -59,7 +59,7 @@
           description: 'Bash helper script, for Terraform file based state projects. Simplifies and shortens cli commands.',
           notes: 'Terraform validate, init, plan, apply, destroy wrapper...',
           technology: ['terraform', 'bash'],
-          sortOrder: 15
+          sortOrder: 110
         }, {
           name:'jinks',
           fa: 'fab fa-jenkins',
@@ -68,7 +68,7 @@
           description: 'Bash script to manage docker blueocean deployment.',
           notes: 'Jenkins, up, down, backup, restore, logs, ssh...',
           technology: ['jenkins', 'docker', 'compose', 'make', 'bash'],
-          sortOrder: 20
+          sortOrder: 115
         }, {
           name:'terraform_r53_web_host_module',
           fa: 'fab fa-aws',
@@ -77,7 +77,7 @@
           description: 'Creates host zone, NS and A or CNAME records for site and www-site',
           notes: 'Can be used to map an AWS resources for domain registered on non-AWS registror...',
           technology: ['Terraform', 'AWS', 'Route53'],
-          sortOrder: 23
+          sortOrder: 120
         }, {
           name:'zeromq-request-response-rest',
           fa: 'fab fa-node-js',
@@ -86,7 +86,7 @@
           description: 'Typical intra-microservice communication using ZeroMQ, exposing REST endpoints',
           notes: 'Promise based request service, microservices, REST...',
           technology: ['nodeJS', 'docker', 'microservices', 'zeromq', 'jenkins', 'make'],
-          sortOrder: 25
+          sortOrder: 125
         }, {
           name:'xs-zeromq-node-base',
           fa: 'fab fa-docker',
@@ -95,7 +95,7 @@
           description: 'ZeroMQ node base image provides node based socket communications between microservices, for lightweight collaboration',
           notes: 'ZeroMQ node base image, consumers: req-rel, pub-sub, broker-worker microservice projects',
           technology: ['docker', 'nodeJS','microservices', 'zeromq', 'jenkins', 'make'],
-          sortOrder: 30
+          sortOrder: 130
         }, {
           name:'terraform_data_source_modules',
           fa: 'fab fa-aws',
@@ -104,7 +104,17 @@
           description: 'These lookup data modules are useful when one needs to grab existing resources ids or pull AMI Ids.',
           notes: 'Terraform data sources for resource lookup...',
           technology: ['terraform', 'AWS'],
-          sortOrder: 35
+          sortOrder: 135
+        }, {
+            name:'s3-glacier-backup',
+            fa: 'fab fa-aws',
+            title:'Glacier cold storage archive.',
+            href: 'https://github.com/xybersolve/s3-glacier-backup',
+            description: 'Bash script automates Glacier backup via S3 of defined sets of directories and buckets. Notifies via SNS email message when automated backup occurs',
+            notes: 'Bash script backs up predefined sets of directories to Glacier via S3...',
+            technology: ['bash', 'AWS', 'S3', 'Glacier'],
+            sortOrder: 138
+          },  {
         // }, {
         //   name:'zeromq-push-pull',
         //   fa: 'fab fa-node-js',
@@ -123,7 +133,7 @@
           description: 'Terraform service to create static S3 website, with Route53 subdomain & www records',
           notes: 'Terraform: AWS, S3, Route53 for a quick and easy static website as subdomain',
           technology: ['terraform', 'AWS', 'S3', 'Route53', 'bash'],
-          sortOrder: 40
+          sortOrder: 140
         }, {
           name:'CryptoScanner-react-client',
           fa: 'fab fa-react',
@@ -132,7 +142,7 @@
           description: 'React client takes leverages Node microservices, to scrape cryptocurrency trading sites and interact with Mongo DB.',
           notes: 'React app is webpack built in Docker container, and pushed to image repository...',
           technology: ['React', 'node', 'webpack'],
-          sortOrder: 45
+          sortOrder: 145
         }, {
           name:'xs-janks',
           fa: 'fab fa-jenkins',
@@ -141,7 +151,7 @@
           description: 'Bash script to manage war deployment of Jenkins.',
           notes: 'Jenkins, start, stop, backup, restore, versions, etc...',
           technology: ['jenkins', 'war', 'bash'],
-          sortOrder: 55
+          sortOrder: 150
         }, {
           name:'xs-checkbox',
           fa: 'fab fa-react',
@@ -150,7 +160,7 @@
           description: 'React checkbox, enables: user customizable icons, check/unchecked label text and return values',
           notes: 'React component enables customization of HTML form type checkbox and returns expected e.target object for controlled forms',
           technology: ['React', 'npm', 'webpack'],
-          sortOrder: 60
+          sortOrder: 155
         }, {
           //https://github.com/xybersolve/xs-checklist
           name:'xs-checklist',
@@ -160,7 +170,7 @@
           description: 'React checklist, leverage Xybersolve "xs-checkbox" into lists of checkboxs',
           notes: 'React component enables lists of customized checkboxs (i.e, icons, labels, text and return values)',
           technology: ['React', 'npm', 'webpack'],
-          sortOrder: 65
+          sortOrder: 160
         }, {
           name:'xybersolve.io',
           fa: 'fab fa-angular',
@@ -169,7 +179,7 @@
           description: 'Angular github page, with code project links and photography slideshow. Currently published as S3 static website',
           notes: 'Gulp automation',
           technology: ['jenkins', 'docker', 'AWS', 'S3', 'make', 'angular 1.3' ,'bootstrap 3.x', 'gulp'],
-          sortOrder: 68
+          sortOrder: 165
         }, {
           name:'Leads',
           fa: 'fab fa-angular',
@@ -178,7 +188,7 @@
           description: 'Manage and track leads.',
           notes: 'MEAN Fullstack, Angular 1.3 features: form validation, $q, etc...',
           technology: ['angular 1.3' , 'gulp', 'bootstrap 3.x', 'MEAN', 'mongodb', 'nodeJS', 'express 4.x'],
-          sortOrder: 70
+          sortOrder: 170
         }, {
           name:'xs-angular-cache-service',
           fa: 'fab fa-angular',
@@ -187,7 +197,7 @@
           description: 'Cache service enables angular project module & session persistence. Extends angular `$cacheFactory`, using HTML5 localStorage for persistence across sessions. Stores data (primitives) or objects. Test',
           notes: 'Test: Karma & Jasmine Unit testing',
           technology: ['angular 1.2' , 'karma', 'jasmine', 'grunt', 'html5'],
-          sortOrder: 75
+          sortOrder: 175
         }, {
           name:'xs-angular-action-buttons-directive',
           fa: 'fab fa-angular',
@@ -196,7 +206,7 @@
           description: 'Easy & configurable action buttons (BootStrap), include: New, Clone, Edit & Delete. Delete has automatic confirmation mechanism. Sizable, using: (xs, sm, md & lg)',
           notes: 'Demo, Test: Protractor e2e',
           technology: ['angular 1.2' , 'bootstrap 3.x', 'protractor', 'grunt'],
-          sortOrder: 80
+          sortOrder: 180
         }, {
           name:'mongowrap',
           fa: 'fas fa-database',
@@ -205,7 +215,7 @@
           description: 'Wraps native node mongoDB driver. Provides persistent authenticated connection and generic routines useful to building RESTful interfaces',
           notes: '',
           technology: ['mongodb', 'node', 'grunt'],
-          sortOrder: 85
+          sortOrder: 185
         }, {
           name:'xs-angular-ui-components',
           fa: 'fab fa-angular',
@@ -214,7 +224,7 @@
           description: 'Handful of components to make it easier to build rich Angular apps.',
           notes: '',
           technology: ['angular 1.2' , 'grunt'],
-          sortOrder: 90
+          sortOrder: 190
           }, {
           name:'xs-angular-wizard',
           fa: 'fab fa-angular',
@@ -223,7 +233,7 @@
           description: 'A simple but useful Angular directive to create wizards, with automatic save button and navigable breadcrumbs buttons.',
           notes: 'Demo',
           technology: ['angular 1.2' , 'bootstrap 3.x', 'grunt'],
-          sortOrder: 95
+          sortOrder: 200
         }
 
       ];
