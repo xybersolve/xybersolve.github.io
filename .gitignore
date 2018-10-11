@@ -17,3 +17,4 @@ hold
 # node_modules/
 vendor/
 deploy.conf.sh
+aws.json

@@ -9,13 +9,12 @@
     "watch": "gulp watch",
     "build:prod": "NODE_ENV=production gulp build:all",
     "build:dev": "NODE_ENV=development gulp build:all",
-    "deploy" : "./deploy --upload",
+    "deploy": "gulp deploy",
     "dev-server": "http-server ./",
     "gulp": "gulp",
     "archive:project": "gulp archive:project",
     "archive:build": "gulp archive:build",
-    "debug": "gulp show:filePaths",
-    "deploy": "./deploy --upload"
+    "debug": "gulp show:filePaths"
   },
   "repository": {
     "type": "git",
@@ -75,6 +74,7 @@
     "gulp-less": "^3.0.0",
     "gulp-minify-html": "^0.1.8",
     "gulp-rename": "^1.2.0",
+    "gulp-s3": "^0.11.0",
     "gulp-sourcemaps": "^1.3.0",
     "gulp-strip-debug": "^1.0.2",
     "gulp-uglify": "^1.0.2",

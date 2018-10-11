@@ -10,4 +10,5 @@
 
 "scripts" : {
   "dev-server": "http-server ./ &",
+  "deploy": "./deploy --upload",
 }
