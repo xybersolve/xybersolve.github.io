@@ -16,5 +16,4 @@ hold
 # as vendor/ breaks their parser
 # node_modules/
 vendor/
-deploy.conf.sh
 aws.json
