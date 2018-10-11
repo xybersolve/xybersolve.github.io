@@ -15,7 +15,7 @@ declare RESUME_DIR=~/Documents/Resume/
 declare RESUME_PATH=${RESUME_DIR}/${RESUME_FILE}
 declare LETTER_PATH=${RESUME_DIR}/${LETTER_FILE}
 
-declare SITE_BUCKET='xybersolve.io'
+declare SITE_BUCKET='xybersolve.io2'
 declare LOG_BUCKET='logs.xybersolve.io'
 
 declare -ar FILES=(
