@@ -10,6 +10,7 @@ pipeline {
   environment {
     CI = 'true'
   }
+  
   options {
     withAWS(profile:'jenkins')
   }
@@ -17,8 +18,9 @@ pipeline {
   stages {
 
     stage('Check AWS') {
+
+      def awsIdentity = awsIdentity()
       steps {
-        def awsIdentity = awsIdentity()
         sh "echo ${awsIdentity}"
       }
     }
@@ -37,7 +39,7 @@ pipeline {
 
     stage('Deploy') {
       steps {
-        aws s3 ls "s3://${bucket}"
+        sh "aws s3 ls s3://${bucket}"
       }
     }
   }
