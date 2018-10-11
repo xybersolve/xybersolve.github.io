@@ -9,16 +9,16 @@ pipeline {
   }
 
   stages {
-    /*
+
     stage('Checkout') {
       steps {
         checkout scm
       }
     }
-    */
-    stage('npm info') {
+
+    stage('npm version') {
       steps {
-        sh 'npm info'
+        sh 'npm version'
       }
     }
 
