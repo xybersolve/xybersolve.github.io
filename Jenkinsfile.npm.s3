@@ -16,15 +16,19 @@ pipeline {
       }
     }
 
-    stage('npm version') {
+    stage('Build') {
       steps {
-        sh 'npm version'
+        sh 'npm run build:prod'
       }
     }
 
-    stage('aws s3 test') {
+    stage('Deploy') {
       steps {
-        sh "aws --profile ${profile} s3 ls s3://${bucket}"
+        //sh "aws --profile ${profile} s3 ls s3://${bucket}"
+        //sh "aws --profile ${profile} s3 "
+        sh 'pwd'
+        sh 'ls'
+        //sh "./deploy --upload"
       }
     }
   }
