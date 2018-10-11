@@ -164,14 +164,12 @@ source "${CONF_FILE}" \
 __upload() {
   for file in "${FILES[@]}"; do
     printf "Copying file: %s\n" "${file}"
-    ls ${SITE_DIR}/${file}
-    echo aws s3 --profile "${AWS_PROFILE}" cp ${SITE_DIR}/${file} s3://${SITE_BUCKET}
+    aws s3 --profile "${AWS_PROFILE}" cp ${SITE_DIR}/${file} s3://${SITE_BUCKET}
   done
 
   for dir in "${DIRS[@]}"; do
     printf "Copying directory: %s\n" "${dir}"
-    ls ${SITE_DIR}/${dir}/
-    echo aws s3 --profile "${AWS_PROFILE}" cp ${SITE_DIR}/${dir}/ s3://${SITE_BUCKET}/${dir} \
+    aws s3 --profile "${AWS_PROFILE}" cp ${SITE_DIR}/${dir}/ s3://${SITE_BUCKET}/${dir} \
       --recursive \
       --exclude '*DS_Store*'
   done

@@ -4,6 +4,9 @@
 #  * content copy definitions
 #  * this is a sample of working configuration for deploy - fill per requirement
 #
+declare AWS_REGION=
+declare AWS_PROFILE=
+
 declare SITE_DIR=
 declare RESUME_FILE=
 declare RESUME_DEST_FILE=
