@@ -9,22 +9,6 @@ pipeline {
         checkout scm
       }
     }
-
-    stage('Build') {
-      steps {
-        //sh 'make build-build'
-        sh 'npm run build:prod'
-      }
-    }
-
-    stage('S3-Deploy') {
-      steps {
-        sh "aws s3 ls s3://${bucket}"
-        //sh "aws s3 cp ${build_dir}/app/ s3://${bucket}/app/"
-        //sh "aws s3 cp packaging/build/VERSION s3://${bucket}//"
-      }
-    }
-    /*
     stage('Build Web') {
       steps {
         sh 'make build-web'
@@ -45,7 +29,6 @@ pipeline {
         }
       }
     }
-    */
   }
 }
 
