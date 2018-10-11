@@ -17,8 +17,10 @@ pipeline {
   stages {
 
     stage('Check AWS') {
-      def awsIdentity = awsIdentity()
-      sh "echo ${awsIdentity}"
+      steps {
+        def awsIdentity = awsIdentity()
+        sh "echo ${awsIdentity}"
+      }
     }
 
     stage('Checkout') {
