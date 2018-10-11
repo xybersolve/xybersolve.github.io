@@ -26,9 +26,9 @@ pipeline {
       steps {
         //sh "aws --profile ${profile} s3 ls s3://${bucket}"
         //sh "aws --profile ${profile} s3 "
-        sh 'pwd'
-        sh 'ls'
-        //sh "./deploy --upload"
+        //sh 'pwd'
+        //sh 'ls'
+        sh './deploy --upload --pwd'
       }
     }
   }
