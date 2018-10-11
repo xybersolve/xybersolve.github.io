@@ -31,5 +31,12 @@ pipeline {
         sh './deploy --upload --pwd'
       }
     }
+
+    stage('Clean Up') {
+      steps {
+        cleanWs()
+      }
+    }
+
   }
 }
