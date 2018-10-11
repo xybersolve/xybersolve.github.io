@@ -19,7 +19,8 @@ var gulp        = require('gulp')
   , runSequence = require('run-sequence')
   , rename      = require('gulp-rename')
   , del         = require('del')
-  , zip         = require('gulp-zip');
+  , zip         = require('gulp-zip')
+  , s3          = require('gulp-s3');
 
 var project = 'gmilligan@github'
   , verbose = true
@@ -192,6 +193,12 @@ gulp
       .src(filePaths.build)
       .pipe(zip(filename))
       .pipe(gulp.dest(paths.archives));
+  })
+  // ------------------------------------------------
+  // Deploy Tasks
+  //
+  .task('deploy', function(){
+    return gulp.src('./build/**/*').pipe(s3(require('./aws.json')))
   })
 
   // ------------------------------------------------
