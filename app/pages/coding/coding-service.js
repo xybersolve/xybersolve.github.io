@@ -15,6 +15,16 @@
       var model = {};
       model.projects = [
         {
+          name:'s3-glacier-backup',
+          fa: 'fab fa-aws',
+          title:'Glacier cold storage archive.',
+          href: 'https://github.com/xybersolve/s3-glacier-backup',
+          description: 'Bash script automates Glacier backup via S3 of defined sets of directories and buckets. Notifies via SNS email message when automated backup occurs',
+          notes: 'Bash script backs up predefined sets of directories to Glacier via S3...',
+          technology: ['bash', 'AWS', 'S3', 'Glacier'],
+          sortOrder: 85
+        },  {
+
           name:'terraform_gsuite_aws_module',
           fa: 'fab fa-aws',
           title:'Custom Terraform Module to map DNS for corporate email via GSuite.',
@@ -106,26 +116,6 @@
           technology: ['terraform', 'AWS'],
           sortOrder: 135
         }, {
-            name:'s3-glacier-backup',
-            fa: 'fab fa-aws',
-            title:'Glacier cold storage archive.',
-            href: 'https://github.com/xybersolve/s3-glacier-backup',
-            description: 'Bash script automates Glacier backup via S3 of defined sets of directories and buckets. Notifies via SNS email message when automated backup occurs',
-            notes: 'Bash script backs up predefined sets of directories to Glacier via S3...',
-            technology: ['bash', 'AWS', 'S3', 'Glacier'],
-            sortOrder: 138
-          },  {
-        // }, {
-        //   name:'zeromq-push-pull',
-        //   fa: 'fab fa-node-js',
-        //   title:'ZeroMQ Push/Pull for REST service',
-        //   href: 'https://github.com/xybersolve/xs-zeromq-push-pull',
-        //   description: 'ZeroMQ intra-microservice communication push/pull examples',
-        //   notes: 'Promise based request service, microservices...',
-        //   technology: ['zeromq', 'nodeJS', 'microservices', 'docker', 'make'],
-        //   sortOrder: 30
-
-        }, {
           name:'terraform-s3-subdomain',
           fa: 'fab fa-aws',
           title:'Terraform S3 Static Website',
@@ -162,7 +152,6 @@
           technology: ['React', 'npm', 'webpack'],
           sortOrder: 155
         }, {
-          //https://github.com/xybersolve/xs-checklist
           name:'xs-checklist',
           fa: 'fab fa-react',
           title:'React checklist component.',
@@ -235,7 +224,15 @@
           technology: ['angular 1.2' , 'bootstrap 3.x', 'grunt'],
           sortOrder: 200
         }
-
+        // }, {
+        //   name:'zeromq-push-pull',
+        //   fa: 'fab fa-node-js',
+        //   title:'ZeroMQ Push/Pull for REST service',
+        //   href: 'https://github.com/xybersolve/xs-zeromq-push-pull',
+        //   description: 'ZeroMQ intra-microservice communication push/pull examples',
+        //   notes: 'Promise based request service, microservices...',
+        //   technology: ['zeromq', 'nodeJS', 'microservices', 'docker', 'make'],
+        //   sortOrder: 30
       ];
 
       return model;
