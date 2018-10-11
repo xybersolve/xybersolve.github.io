@@ -1,0 +1,31 @@
+def bucket = 'xybersolve.io'
+def build_dir = '/Users/Greg/Sites/gmilligan.github.io'
+def profile = 'jenkins'
+
+pipeline {
+  agent any
+  environment {
+    CI = 'true'
+  }
+
+  stages {
+    /*
+    stage('Checkout') {
+      steps {
+        checkout scm
+      }
+    }
+    */
+    stage('npm info') {
+      steps {
+        sh 'npm info'
+      }
+    }
+
+    stage('aws s3 test') {
+      steps {
+        sh "aws --profile ${profile} s3 ls s3://${bucket}"
+      }
+    }
+  }
+}
