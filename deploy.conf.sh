@@ -3,17 +3,20 @@
 #  S3 static webSite configuration file
 #   * content copy definitions
 #
-declare -r SITE_DIR=~/Sites/gmilligan.github.io
-declare -r RESUME_FILE=Greg.Milligan-DevOps-Resume.docx
-declare -r RESUME_DEST_FILE=greg.milligan.devops.resume.docx
-declare -r LETTER_FILE=Greg.Milligan-DevOps-Cover-Letter.docx
-declare -r LETTER_DEST_FILE=greg.milligan.devops.cover.letter.docx
-declare -r RESUME_DIR=~/Documents/Resume/
-declare -r RESUME_PATH=${RESUME_DIR}/${RESUME_FILE}
-declare -r LETTER_PATH=${RESUME_DIR}/${LETTER_FILE}
+declare AWS_REGION='us-west-2'
+declare AWS_PROFILE='jenkins'
 
-declare -r SITE_BUCKET='xybersolve.io'
-declare -r LOG_BUCKET='logs.xybersolve.io'
+declare SITE_DIR=~/Sites/gmilligan.github.io
+declare RESUME_FILE=Greg.Milligan-DevOps-Resume.docx
+declare RESUME_DEST_FILE=greg.milligan.devops.resume.docx
+declare LETTER_FILE=Greg.Milligan-DevOps-Cover-Letter.docx
+declare LETTER_DEST_FILE=greg.milligan.devops.cover.letter.docx
+declare RESUME_DIR=~/Documents/Resume/
+declare RESUME_PATH=${RESUME_DIR}/${RESUME_FILE}
+declare LETTER_PATH=${RESUME_DIR}/${LETTER_FILE}
+
+declare SITE_BUCKET='xybersolve.io'
+declare LOG_BUCKET='logs.xybersolve.io'
 
 declare -ar FILES=(
   'index.html'

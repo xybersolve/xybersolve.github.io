@@ -60,18 +60,23 @@ declare -r SYNTAX=$(cat <<EOF
       --help:  help and usage
       --version: show version info
 
-      --sync=<directory>: Synchronize files between project and S3
-      --upload: Upload all pertinent files and directories
-      --updoad-file=<file>: TODO
-      --upload-dir=<directory>: Upload a given directory
-      --upload-res*: Upload newest resume
-      --delete-file=<file>: TODO
-      --delete-dir=<directory>: Delete a directory
-      --delete-all: Delete all content
-      --delete-logs: Delete all logs
-      --remove-log: Remove the log bucket
-      --list: List all the content
-      --size: show sizes
+      Actions:
+        --sync=<directory>: Synchronize files between project and S3
+        --upload: Upload all pertinent files and directories
+        --updoad-file=<file>: TODO
+        --upload-dir=<directory>: Upload a given directory
+        --upload-res*: Upload newest resume
+        --delete-file=<file>: TODO
+        --delete-dir=<directory>: Delete a directory
+        --delete-all: Delete all content
+        --delete-logs: Delete all logs
+        --remove-log: Remove the log bucket
+        --list: List all the content
+        --size: show sizes
+
+      Flags:
+        --pwd: use current directory for uploads
+
 
 EOF
 )
@@ -96,6 +101,7 @@ declare -i SIZE=${FALSE}
 
 # flags
 declare -i DRY_RUN=${FALSE}
+declare -i USE_PWD=${FALSE}
 
 # script globals
 declare DIRECTORY=''
@@ -241,7 +247,6 @@ __open_resume() {
 
 }
 
-
 __get_opts() {
   while (( $# > 0 )); do
     local arg="${1}"; shift;
@@ -275,6 +280,12 @@ __get_opts() {
         UPLOAD_DIR=${TRUE}
         [[ ${arg} =~ '=' ]] && DIRECTORY="${arg#*=}"
         ;;
+      # Flags
+      --pwd)
+        USE_PWD=${TRUE}
+        SITE_DIR='.'
+        ;;
+
       *) die "Unknown option: ${arg}" ;;
    esac
   done
