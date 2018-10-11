@@ -1,5 +1,6 @@
 def bucket = 'xybersolve.io'
 def build_dir = '/Users/Greg/Sites/gmilligan.github.io'
+def profile = 'jenkins'
 
 pipeline {
   agent {
@@ -10,21 +11,11 @@ pipeline {
   environment {
     CI = 'true'
   }
-  
+
   options {
     withAWS(profile:'jenkins')
   }
-
   stages {
-
-    stage('Check AWS') {
-
-      def awsIdentity = awsIdentity()
-      steps {
-        sh "echo ${awsIdentity}"
-      }
-    }
-
     stage('Checkout') {
       steps {
         checkout scm
@@ -39,7 +30,10 @@ pipeline {
 
     stage('Deploy') {
       steps {
-        sh "aws s3 ls s3://${bucket}"
+        //withAWS(profile:'jenkins'){
+          //s3Upload(bucket:"my-bucket", path:'path/to/targetFolder/', includePathPattern:'**/*.ttf', workingDir:'dist', contentType:'application/x-font-ttf')
+        sh "aws --profile ${profile} s3 ls s3://${bucket}"
+        //}
       }
     }
   }
