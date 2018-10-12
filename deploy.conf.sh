@@ -11,7 +11,7 @@ declare RESUME_FILE=Greg.Milligan-DevOps-Resume.docx
 declare RESUME_DEST_FILE=greg.milligan.devops.resume.docx
 declare LETTER_FILE=Greg.Milligan-DevOps-Cover-Letter.docx
 declare LETTER_DEST_FILE=greg.milligan.devops.cover.letter.docx
-declare RESUME_DIR=~/Documents/Resume/
+declare RESUME_DIR=~/Documents/Resume/Word
 declare RESUME_PATH=${RESUME_DIR}/${RESUME_FILE}
 declare LETTER_PATH=${RESUME_DIR}/${LETTER_FILE}
 
